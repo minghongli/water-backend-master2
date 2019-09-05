@@ -1,0 +1,681 @@
+{
+  "name": "meituan-back",
+  "version": "1.0.1",
+  "description": "",
+  "main": "index.js",
+  name=麦当当的店, third_category=中式简餐, pic_url=http://p0.meituan.net/xianfu/fdd295e7650587269e0f1d7c35ba180c114177.jpg,shopping_time_start=8:00, shopping_time_end=24:00, min_price=10, shipping_fee=0, bulletin=理工短号615592（原大学生粗粮坊）做你身边最快的外卖！, address=东莞市大岭山镇元岭村翠园街7巷20号102铺, call_center=15916985301, lng=113.854074, lat=22.901119
+}
+/*http://39.108.3.12:3000/v1/restaurants?lat=39.9219&limit=4&lng=116.44355&offset=0
+http://39.108.3.12:3000/v1/restaurants?lat=39.9219&limit=4&lng=116.44355&offset=4
+http://39.108.3.12:3000/v1/restaurants?lat=39.9219&limit=4&lng=116.44355&offset=8
+http://39.108.3.12:3000/v1/restaurants?lat=39.9219&limit=4&lng=116.44355&offset=12*/
+{"status":200,"message":"获取餐馆列表成功","data":[{"_id":"5ac5af803714cc2d644f4615","id":32,"name":"麦当当的店","month_sales":194,"month_sales_tip":"月售194笔","wm_poi_score":3,"delivery_score":1.8,"quality_score":3.7,"pack_score":4.1,"food_score":1.1,"delivery_time_tip":"1585.6分钟","third_category":"中式简餐","pic_url":"http://p0.meituan.net/xianfu/fdd295e7650587269e0f1d7c35ba180c114177.jpg","shopping_time_start":"8:00","shopping_time_end":"24:00","min_price":10,"min_price_tip":"起送 ￥10","shipping_fee":0,"shipping_fee_tip":"配送 ￥0","bulletin":"理工短号615592（原大学生粗粮坊）做你身边最快的外卖！","address":"东莞市大岭山镇元岭村翠园街7巷20号102铺","call_center":"15916985301","distance":"2148.4km","average_price_tip":"人均20","comment_number":49,"lng":"113.854074","lat":"22.901119","__v":0,"created_at":"2018-04-05T05:08:44.533Z","discounts2":[{"info":"满20减18;满45减40;满60减53","icon_url":"http://p0.meituan.net/xianfu/f8bc8dffdbc805878aa3801a33f563cd1001.png","promotion_type":2},{"info":"折扣商品7.33折起","icon_url":"http://p1.meituan.net/xianfu/9c997ecce6150671b8459738a26f8bd9767.png","promotion_type":2},{"info":"新用户立减2元,首次使用银行卡支付最高再减3元","icon_url":"http://p0.meituan.net/xianfu/019d1bbb1310b1531e6af6172c9a5095581.png","promotion_type":2}]},{"_id":"5ac5b4383714cc2d644f4696","id":33,"name":"伏牛炸鸡汉堡","month_sales":173,"month_sales_tip":"月售173笔","wm_poi_score":1.5,"delivery_score":3.1,"quality_score":1.3,"pack_score":1.8,"food_score":0.7,"delivery_time_tip":"1585.2分钟","third_category":"中式简餐","pic_url":"http://p0.meituan.net/xianfu/55493399bb1c6e4884ff9456f92a391119693.jpg","shopping_time_start":"8:00","shopping_time_end":"24:00","min_price":10,"min_price_tip":"起送 ￥10","shipping_fee":0,"shipping_fee_tip":"配送 ￥0","bulletin":"理工专送，新旧男生宿舍下单都送到宿舍楼上。女生下楼领取。1点半到4点接受预订单。","address":"东莞市大岭山镇元岭村元岭综合市场1140号铺位","call_center":"15024098870","distance":"2148.3km","average_price_tip":"人均20","comment_number":49,"lng":"113.854364","lat":"22.902121","__v":0,"created_at":"2018-04-05T05:08:44.533Z","discounts2":[{"info":"满20减18;满45减40;满60减53","icon_url":"http://p0.meituan.net/xianfu/f8bc8dffdbc805878aa3801a33f563cd1001.png","promotion_type":2},{"info":"折扣商品7.33折起","icon_url":"http://p1.meituan.net/xianfu/9c997ecce6150671b8459738a26f8bd9767.png","promotion_type":2},{"info":"新用户立减2元,首次使用银行卡支付最高再减3元","icon_url":"http://p0.meituan.net/xianfu/019d1bbb1310b1531e6af6172c9a5095581.png","promotion_type":2}]},{"_id":"5ac5b7fb3714cc2d644f4756","id":35,"name":"潇湘粤语（东城万达店）","month_sales":28,"month_sales_tip":"月售28笔","wm_poi_score":1.9,"delivery_score":3.5,"quality_score":0.5,"pack_score":0.8,"food_score":1.6,"delivery_time_tip":"1571.3分钟","third_category":"中式简餐","pic_url":"http://p0.meituan.net/xianfu/4f5897d268ec95176d8afd4bf6e8a7252376.jpg","shopping_time_start":"8:00","shopping_time_end":"24:00","min_price":20,"min_price_tip":"起送 ￥20","shipping_fee":4,"shipping_fee_tip":"配送 ￥4","bulletin":"亲，记得点米饭哦！！\n 即日起：凡在本店下单送免费小吃一份\n               订单满200元送水果一份","address":"东城区万达广场室内步行街三层3016","call_center":"076987006660","distance":"2171.7km","average_price_tip":"人均20","comment_number":41,"lng":"113.780507","lat":"23.034935","__v":0,"created_at":"2018-04-05T05:08:44.533Z","discounts2":[{"info":"满20减18;满45减40;满60减53","icon_url":"http://p0.meituan.net/xianfu/f8bc8dffdbc805878aa3801a33f563cd1001.png","promotion_type":2},{"info":"折扣商品7.33折起","icon_url":"http://p1.meituan.net/xianfu/9c997ecce6150671b8459738a26f8bd9767.png","promotion_type":2},{"info":"新用户立减2元,首次使用银行卡支付最高再减3元","icon_url":"http://p0.meituan.net/xianfu/019d1bbb1310b1531e6af6172c9a5095581.png","promotion_type":2}]},{"_id":"5ac5ba2f3714cc2d644f47f1","id":36,"name":"麦当劳（东城万达店）","month_sales":32,"month_sales_tip":"月售32笔","wm_poi_score":2.8,"delivery_score":2.8,"quality_score":3.4,"pack_score":3.6,"food_score":0.3,"delivery_time_tip":"1567.4分钟","third_category":"中式简餐","pic_url":"http://p0.meituan.net/xianfu/851a8deb169f4f8aab16a7688932328f5634.jpg","shopping_time_start":"8:00","shopping_time_end":"24:00","min_price":20,"min_price_tip":"起送 ￥20","shipping_fee":3,"shipping_fee_tip":"配送 ￥3","bulletin":"欢迎下单","address":"东城区东纵大道万达广场2楼2027/2028号商铺","call_center":"0769-83785043","distance":"2166.1km","average_price_tip":"人均20","comment_number":41,"lng":"113.779576","lat":"23.035256","__v":0,"created_at":"2018-04-05T05:08:44.533Z","discounts2":[{"info":"满20减18;满45减40;满60减53","icon_url":"http://p0.meituan.net/xianfu/f8bc8dffdbc805878aa3801a33f563cd1001.png","promotion_type":2},{"info":"折扣商品7.33折起","icon_url":"http://p1.meituan.net/xianfu/9c997ecce6150671b8459738a26f8bd9767.png","promotion_type":2},{"info":"新用户立减2元,首次使用银行卡支付最高再减3元","icon_url":"http://p0.meituan.net/xianfu/019d1bbb1310b1531e6af6172c9a5095581.png","promotion_type":2}]}]}
+{
+  "status": 200,
+  "message": "获取餐馆列表成功",
+  "data": [{
+    "_id": "5ac5af803714cc2d644f4615",
+    "id": 32,
+    "name": "麦当当的店",
+    "month_sales": 194,
+    "month_sales_tip": "月售194笔",
+    "wm_poi_score": 3,
+    "delivery_score": 1.8,
+    "quality_score": 3.7,
+    "pack_score": 4.1,
+    "food_score": 1.1,
+    "delivery_time_tip": "1585.6分钟",
+    "third_category": "中式简餐",
+    "pic_url": "http://p0.meituan.net/xianfu/fdd295e7650587269e0f1d7c35ba180c114177.jpg",
+    "shopping_time_start": "8:00",
+    "shopping_time_end": "24:00",
+    "min_price": 10,
+    "min_price_tip": "起送 ￥10",
+    "shipping_fee": 0,
+    "shipping_fee_tip": "配送 ￥0",
+    "bulletin": "理工短号615592（原大学生粗粮坊）做你身边最快的外卖！",
+    "address": "东莞市大岭山镇元岭村翠园街7巷20号102铺",
+    "call_center": "15916985301",
+    "distance": "2148.4km",
+    "average_price_tip": "人均20",
+    "comment_number": 49,
+    "lng": "113.854074",
+    "lat": "22.901119",
+    "__v": 0,
+    "created_at": "2018-04-05T05:08:44.533Z",
+    "discounts2": [{
+      "info": "满20减18;满45减40;满60减53",
+      "icon_url": "http://p0.meituan.net/xianfu/f8bc8dffdbc805878aa3801a33f563cd1001.png",
+      "promotion_type": 2
+    }, {
+      "info": "折扣商品7.33折起",
+      "icon_url": "http://p1.meituan.net/xianfu/9c997ecce6150671b8459738a26f8bd9767.png",
+      "promotion_type": 2
+    }, {
+      "info": "新用户立减2元,首次使用银行卡支付最高再减3元",
+      "icon_url": "http://p0.meituan.net/xianfu/019d1bbb1310b1531e6af6172c9a5095581.png",
+      "promotion_type": 2
+    }]
+  }, {
+    "_id": "5ac5b4383714cc2d644f4696",
+    "id": 33,
+    "name": "伏牛炸鸡汉堡",
+    "month_sales": 173,
+    "month_sales_tip": "月售173笔",
+    "wm_poi_score": 1.5,
+    "delivery_score": 3.1,
+    "quality_score": 1.3,
+    "pack_score": 1.8,
+    "food_score": 0.7,
+    "delivery_time_tip": "1585.2分钟",
+    "third_category": "中式简餐",
+    "pic_url": "http://p0.meituan.net/xianfu/55493399bb1c6e4884ff9456f92a391119693.jpg",
+    "shopping_time_start": "8:00",
+    "shopping_time_end": "24:00",
+    "min_price": 10,
+    "min_price_tip": "起送 ￥10",
+    "shipping_fee": 0,
+    "shipping_fee_tip": "配送 ￥0",
+    "bulletin": "理工专送，新旧男生宿舍下单都送到宿舍楼上。女生下楼领取。1点半到4点接受预订单。",
+    "address": "东莞市大岭山镇元岭村元岭综合市场1140号铺位",
+    "call_center": "15024098870",
+    "distance": "2148.3km",
+    "average_price_tip": "人均20",
+    "comment_number": 49,
+    "lng": "113.854364",
+    "lat": "22.902121",
+    "__v": 0,
+    "created_at": "2018-04-05T05:08:44.533Z",
+    "discounts2": [{
+      "info": "满20减18;满45减40;满60减53",
+      "icon_url": "http://p0.meituan.net/xianfu/f8bc8dffdbc805878aa3801a33f563cd1001.png",
+      "promotion_type": 2
+    }, {
+      "info": "折扣商品7.33折起",
+      "icon_url": "http://p1.meituan.net/xianfu/9c997ecce6150671b8459738a26f8bd9767.png",
+      "promotion_type": 2
+    }, {
+      "info": "新用户立减2元,首次使用银行卡支付最高再减3元",
+      "icon_url": "http://p0.meituan.net/xianfu/019d1bbb1310b1531e6af6172c9a5095581.png",
+      "promotion_type": 2
+    }]
+  }, {
+    "_id": "5ac5b7fb3714cc2d644f4756",
+    "id": 35,
+    "name": "潇湘粤语（东城万达店）",
+    "month_sales": 28,
+    "month_sales_tip": "月售28笔",
+    "wm_poi_score": 1.9,
+    "delivery_score": 3.5,
+    "quality_score": 0.5,
+    "pack_score": 0.8,
+    "food_score": 1.6,
+    "delivery_time_tip": "1571.3分钟",
+    "third_category": "中式简餐",
+    "pic_url": "http://p0.meituan.net/xianfu/4f5897d268ec95176d8afd4bf6e8a7252376.jpg",
+    "shopping_time_start": "8:00",
+    "shopping_time_end": "24:00",
+    "min_price": 20,
+    "min_price_tip": "起送 ￥20",
+    "shipping_fee": 4,
+    "shipping_fee_tip": "配送 ￥4",
+    "bulletin": "亲，记得点米饭哦！！\n 即日起：凡在本店下单送免费小吃一份\n               订单满200元送水果一份",
+    "address": "东城区万达广场室内步行街三层3016",
+    "call_center": "076987006660",
+    "distance": "2171.7km",
+    "average_price_tip": "人均20",
+    "comment_number": 41,
+    "lng": "113.780507",
+    "lat": "23.034935",
+    "__v": 0,
+    "created_at": "2018-04-05T05:08:44.533Z",
+    "discounts2": [{
+      "info": "满20减18;满45减40;满60减53",
+      "icon_url": "http://p0.meituan.net/xianfu/f8bc8dffdbc805878aa3801a33f563cd1001.png",
+      "promotion_type": 2
+    }, {
+      "info": "折扣商品7.33折起",
+      "icon_url": "http://p1.meituan.net/xianfu/9c997ecce6150671b8459738a26f8bd9767.png",
+      "promotion_type": 2
+    }, {
+      "info": "新用户立减2元,首次使用银行卡支付最高再减3元",
+      "icon_url": "http://p0.meituan.net/xianfu/019d1bbb1310b1531e6af6172c9a5095581.png",
+      "promotion_type": 2
+    }]
+  }, {
+    "_id": "5ac5ba2f3714cc2d644f47f1",
+    "id": 36,
+    "name": "麦当劳（东城万达店）",
+    "month_sales": 32,
+    "month_sales_tip": "月售32笔",
+    "wm_poi_score": 2.8,
+    "delivery_score": 2.8,
+    "quality_score": 3.4,
+    "pack_score": 3.6,
+    "food_score": 0.3,
+    "delivery_time_tip": "1567.4分钟",
+    "third_category": "中式简餐",
+    "pic_url": "http://p0.meituan.net/xianfu/851a8deb169f4f8aab16a7688932328f5634.jpg",
+    "shopping_time_start": "8:00",
+    "shopping_time_end": "24:00",
+    "min_price": 20,
+    "min_price_tip": "起送 ￥20",
+    "shipping_fee": 3,
+    "shipping_fee_tip": "配送 ￥3",
+    "bulletin": "欢迎下单",
+    "address": "东城区东纵大道万达广场2楼2027/2028号商铺",
+    "call_center": "0769-83785043",
+    "distance": "2166.1km",
+    "average_price_tip": "人均20",
+    "comment_number": 41,
+    "lng": "113.779576",
+    "lat": "23.035256",
+    "__v": 0,
+    "created_at": "2018-04-05T05:08:44.533Z",
+    "discounts2": [{
+      "info": "满20减18;满45减40;满60减53",
+      "icon_url": "http://p0.meituan.net/xianfu/f8bc8dffdbc805878aa3801a33f563cd1001.png",
+      "promotion_type": 2
+    }, {
+      "info": "折扣商品7.33折起",
+      "icon_url": "http://p1.meituan.net/xianfu/9c997ecce6150671b8459738a26f8bd9767.png",
+      "promotion_type": 2
+    }, {
+      "info": "新用户立减2元,首次使用银行卡支付最高再减3元",
+      "icon_url": "http://p0.meituan.net/xianfu/019d1bbb1310b1531e6af6172c9a5095581.png",
+      "promotion_type": 2
+    }]
+  }]
+}
+{"status":200,"message":"获取餐馆列表成功","data":[{"_id":"5ac5da353714cc2d644f48be","id":37,"name":"必胜客（松湖烟雨）","month_sales":90,"month_sales_tip":"月售90笔","wm_poi_score":0.7,"delivery_score":2.5,"quality_score":0.9,"pack_score":0.7,"food_score":1.5,"delivery_time_tip":"1571.7分钟","third_category":"中式简餐","pic_url":"http://p0.meituan.net/xianfu/411142b4603dabb3084fe88ca6b2640418143.jpg","shopping_time_start":"8:00","shopping_time_end":"24:00","min_price":20,"min_price_tip":"起送 ￥20","shipping_fee":4,"shipping_fee_tip":"配送 ￥4","bulletin":"本店可提供电子发票，需要的备注下。","address":"松山湖高新技术产业开发区新竹路7号万科松湖中心万科生活广场","call_center":"0769-26991896","distance":"2143.9km","average_price_tip":"人均20","comment_number":40,"lng":"113.892980","lat":"22.930512","__v":0,"created_at":"2018-04-05T05:08:44.533Z","discounts2":[{"info":"满20减18;满45减40;满60减53","icon_url":"http://p0.meituan.net/xianfu/f8bc8dffdbc805878aa3801a33f563cd1001.png","promotion_type":2},{"info":"折扣商品7.33折起","icon_url":"http://p1.meituan.net/xianfu/9c997ecce6150671b8459738a26f8bd9767.png","promotion_type":2},{"info":"新用户立减2元,首次使用银行卡支付最高再减3元","icon_url":"http://p0.meituan.net/xianfu/019d1bbb1310b1531e6af6172c9a5095581.png","promotion_type":2}]},{"_id":"5ac5dc9c3714cc2d644f49aa","id":38,"name":"秦关面道（松山湖店）","month_sales":21,"month_sales_tip":"月售21笔","wm_poi_score":2.7,"delivery_score":1.2,"quality_score":4.8,"pack_score":1.2,"food_score":2.5,"delivery_time_tip":"1571.7分钟","third_category":"中式简餐","pic_url":"http://p0.meituan.net/xianfu/fdb7a7f03a0c3543d336870c899ff5f087861.png","shopping_time_start":"8:00","shopping_time_end":"24:00","min_price":20,"min_price_tip":"起送 ￥20","shipping_fee":4,"shipping_fee_tip":"配送 ￥4","bulletin":"外卖制作+配送都需要消耗时间,为了能及时用餐,希望大家提前半小时以上预定,避开高峰拥堵。","address":"沁园路万科生活广场L1-030号","call_center":"0769-26622306","distance":"2143.9km","average_price_tip":"人均20","comment_number":40,"lng":"113.893149","lat":"22.930645","__v":0,"created_at":"2018-04-05T05:08:44.533Z","discounts2":[{"info":"满20减18;满45减40;满60减53","icon_url":"http://p0.meituan.net/xianfu/f8bc8dffdbc805878aa3801a33f563cd1001.png","promotion_type":2},{"info":"折扣商品7.33折起","icon_url":"http://p1.meituan.net/xianfu/9c997ecce6150671b8459738a26f8bd9767.png","promotion_type":2},{"info":"新用户立减2元,首次使用银行卡支付最高再减3元","icon_url":"http://p0.meituan.net/xianfu/019d1bbb1310b1531e6af6172c9a5095581.png","promotion_type":2}]},{"_id":"5ac5e03e3714cc2d644f4a6a","id":39,"name":"米有沙拉","month_sales":39,"month_sales_tip":"月售39笔","wm_poi_score":0.2,"delivery_score":1.8,"quality_score":3.8,"pack_score":3.5,"food_score":3.4,"delivery_time_tip":"1572.0分钟","third_category":"中式简餐","pic_url":"http://p0.meituan.net/xianfu/e7918b2b4ed24c61c4235fb43accf4e2102516.jpg","shopping_time_start":"8:00","shopping_time_end":"24:00","min_price":15,"min_price_tip":"起送 ￥15","shipping_fee":3,"shipping_fee_tip":"配送 ￥3","bulletin":"本店可提供电子发票，需要的备注下。","address":"东莞松山湖高新技术产业开发区沁园路七号长城世家34幢商铺105-107","call_center":"0769-22892295","distance":"2144.3km","average_price_tip":"人均20","comment_number":40,"lng":"113.889742","lat":"22.926960","__v":0,"created_at":"2018-04-05T05:08:44.533Z","discounts2":[{"info":"满20减18;满45减40;满60减53","icon_url":"http://p0.meituan.net/xianfu/f8bc8dffdbc805878aa3801a33f563cd1001.png","promotion_type":2},{"info":"折扣商品7.33折起","icon_url":"http://p1.meituan.net/xianfu/9c997ecce6150671b8459738a26f8bd9767.png","promotion_type":2},{"info":"新用户立减2元,首次使用银行卡支付最高再减3元","icon_url":"http://p0.meituan.net/xianfu/019d1bbb1310b1531e6af6172c9a5095581.png","promotion_type":2}]},{"_id":"5ac5e4c23714cc2d644f4b0a","id":41,"name":"麦香堡炸鸡汉堡","month_sales":56,"month_sales_tip":"月售56笔","wm_poi_score":2.9,"delivery_score":4.4,"quality_score":3.9,"pack_score":2.1,"food_score":2.3,"delivery_time_tip":"1571.0分钟","third_category":"中式简餐","pic_url":"http://p1.meituan.net/xianfu/d98fa9158a14a74280b9ca3890e4e56826624.jpg","shopping_time_start":"8:00","shopping_time_end":"24:00","min_price":20,"min_price_tip":"起送 ￥20","shipping_fee":3,"shipping_fee_tip":"配送 ￥3","bulletin":"从10月7号起所有套餐餐品均不能更换，请各位新老客户谅解","address":"东莞市大朗镇佛子凹村佛兴路184号12号铺位","call_center":"13392708560/076981198860","distance":"2144.2km","average_price_tip":"人均20","comment_number":40,"lng":"113.895561","lat":"22.931701","__v":0,"created_at":"2018-04-05T05:08:44.533Z","discounts2":[{"info":"满20减18;满45减40;满60减53","icon_url":"http://p0.meituan.net/xianfu/f8bc8dffdbc805878aa3801a33f563cd1001.png","promotion_type":2},{"info":"折扣商品7.33折起","icon_url":"http://p1.meituan.net/xianfu/9c997ecce6150671b8459738a26f8bd9767.png","promotion_type":2},{"info":"新用户立减2元,首次使用银行卡支付最高再减3元","icon_url":"http://p0.meituan.net/xianfu/019d1bbb1310b1531e6af6172c9a5095581.png","promotion_type":2}]}]}
+{
+  "status": 200,
+  "message": "获取餐馆列表成功",
+  "data": [{
+    "_id": "5ac5da353714cc2d644f48be",
+    "id": 37,
+    "name": "必胜客（松湖烟雨）",
+    "month_sales": 90,
+    "month_sales_tip": "月售90笔",
+    "wm_poi_score": 0.7,
+    "delivery_score": 2.5,
+    "quality_score": 0.9,
+    "pack_score": 0.7,
+    "food_score": 1.5,
+    "delivery_time_tip": "1571.7分钟",
+    "third_category": "中式简餐",
+    "pic_url": "http://p0.meituan.net/xianfu/411142b4603dabb3084fe88ca6b2640418143.jpg",
+    "shopping_time_start": "8:00",
+    "shopping_time_end": "24:00",
+    "min_price": 20,
+    "min_price_tip": "起送 ￥20",
+    "shipping_fee": 4,
+    "shipping_fee_tip": "配送 ￥4",
+    "bulletin": "本店可提供电子发票，需要的备注下。",
+    "address": "松山湖高新技术产业开发区新竹路7号万科松湖中心万科生活广场",
+    "call_center": "0769-26991896",
+    "distance": "2143.9km",
+    "average_price_tip": "人均20",
+    "comment_number": 40,
+    "lng": "113.892980",
+    "lat": "22.930512",
+    "__v": 0,
+    "created_at": "2018-04-05T05:08:44.533Z",
+    "discounts2": [{
+      "info": "满20减18;满45减40;满60减53",
+      "icon_url": "http://p0.meituan.net/xianfu/f8bc8dffdbc805878aa3801a33f563cd1001.png",
+      "promotion_type": 2
+    }, {
+      "info": "折扣商品7.33折起",
+      "icon_url": "http://p1.meituan.net/xianfu/9c997ecce6150671b8459738a26f8bd9767.png",
+      "promotion_type": 2
+    }, {
+      "info": "新用户立减2元,首次使用银行卡支付最高再减3元",
+      "icon_url": "http://p0.meituan.net/xianfu/019d1bbb1310b1531e6af6172c9a5095581.png",
+      "promotion_type": 2
+    }]
+  }, {
+    "_id": "5ac5dc9c3714cc2d644f49aa",
+    "id": 38,
+    "name": "秦关面道（松山湖店）",
+    "month_sales": 21,
+    "month_sales_tip": "月售21笔",
+    "wm_poi_score": 2.7,
+    "delivery_score": 1.2,
+    "quality_score": 4.8,
+    "pack_score": 1.2,
+    "food_score": 2.5,
+    "delivery_time_tip": "1571.7分钟",
+    "third_category": "中式简餐",
+    "pic_url": "http://p0.meituan.net/xianfu/fdb7a7f03a0c3543d336870c899ff5f087861.png",
+    "shopping_time_start": "8:00",
+    "shopping_time_end": "24:00",
+    "min_price": 20,
+    "min_price_tip": "起送 ￥20",
+    "shipping_fee": 4,
+    "shipping_fee_tip": "配送 ￥4",
+    "bulletin": "外卖制作+配送都需要消耗时间,为了能及时用餐,希望大家提前半小时以上预定,避开高峰拥堵。",
+    "address": "沁园路万科生活广场L1-030号",
+    "call_center": "0769-26622306",
+    "distance": "2143.9km",
+    "average_price_tip": "人均20",
+    "comment_number": 40,
+    "lng": "113.893149",
+    "lat": "22.930645",
+    "__v": 0,
+    "created_at": "2018-04-05T05:08:44.533Z",
+    "discounts2": [{
+      "info": "满20减18;满45减40;满60减53",
+      "icon_url": "http://p0.meituan.net/xianfu/f8bc8dffdbc805878aa3801a33f563cd1001.png",
+      "promotion_type": 2
+    }, {
+      "info": "折扣商品7.33折起",
+      "icon_url": "http://p1.meituan.net/xianfu/9c997ecce6150671b8459738a26f8bd9767.png",
+      "promotion_type": 2
+    }, {
+      "info": "新用户立减2元,首次使用银行卡支付最高再减3元",
+      "icon_url": "http://p0.meituan.net/xianfu/019d1bbb1310b1531e6af6172c9a5095581.png",
+      "promotion_type": 2
+    }]
+  }, {
+    "_id": "5ac5e03e3714cc2d644f4a6a",
+    "id": 39,
+    "name": "米有沙拉",
+    "month_sales": 39,
+    "month_sales_tip": "月售39笔",
+    "wm_poi_score": 0.2,
+    "delivery_score": 1.8,
+    "quality_score": 3.8,
+    "pack_score": 3.5,
+    "food_score": 3.4,
+    "delivery_time_tip": "1572.0分钟",
+    "third_category": "中式简餐",
+    "pic_url": "http://p0.meituan.net/xianfu/e7918b2b4ed24c61c4235fb43accf4e2102516.jpg",
+    "shopping_time_start": "8:00",
+    "shopping_time_end": "24:00",
+    "min_price": 15,
+    "min_price_tip": "起送 ￥15",
+    "shipping_fee": 3,
+    "shipping_fee_tip": "配送 ￥3",
+    "bulletin": "本店可提供电子发票，需要的备注下。",
+    "address": "东莞松山湖高新技术产业开发区沁园路七号长城世家34幢商铺105-107",
+    "call_center": "0769-22892295",
+    "distance": "2144.3km",
+    "average_price_tip": "人均20",
+    "comment_number": 40,
+    "lng": "113.889742",
+    "lat": "22.926960",
+    "__v": 0,
+    "created_at": "2018-04-05T05:08:44.533Z",
+    "discounts2": [{
+      "info": "满20减18;满45减40;满60减53",
+      "icon_url": "http://p0.meituan.net/xianfu/f8bc8dffdbc805878aa3801a33f563cd1001.png",
+      "promotion_type": 2
+    }, {
+      "info": "折扣商品7.33折起",
+      "icon_url": "http://p1.meituan.net/xianfu/9c997ecce6150671b8459738a26f8bd9767.png",
+      "promotion_type": 2
+    }, {
+      "info": "新用户立减2元,首次使用银行卡支付最高再减3元",
+      "icon_url": "http://p0.meituan.net/xianfu/019d1bbb1310b1531e6af6172c9a5095581.png",
+      "promotion_type": 2
+    }]
+  }, {
+    "_id": "5ac5e4c23714cc2d644f4b0a",
+    "id": 41,
+    "name": "麦香堡炸鸡汉堡",
+    "month_sales": 56,
+    "month_sales_tip": "月售56笔",
+    "wm_poi_score": 2.9,
+    "delivery_score": 4.4,
+    "quality_score": 3.9,
+    "pack_score": 2.1,
+    "food_score": 2.3,
+    "delivery_time_tip": "1571.0分钟",
+    "third_category": "中式简餐",
+    "pic_url": "http://p1.meituan.net/xianfu/d98fa9158a14a74280b9ca3890e4e56826624.jpg",
+    "shopping_time_start": "8:00",
+    "shopping_time_end": "24:00",
+    "min_price": 20,
+    "min_price_tip": "起送 ￥20",
+    "shipping_fee": 3,
+    "shipping_fee_tip": "配送 ￥3",
+    "bulletin": "从10月7号起所有套餐餐品均不能更换，请各位新老客户谅解",
+    "address": "东莞市大朗镇佛子凹村佛兴路184号12号铺位",
+    "call_center": "13392708560/076981198860",
+    "distance": "2144.2km",
+    "average_price_tip": "人均20",
+    "comment_number": 40,
+    "lng": "113.895561",
+    "lat": "22.931701",
+    "__v": 0,
+    "created_at": "2018-04-05T05:08:44.533Z",
+    "discounts2": [{
+      "info": "满20减18;满45减40;满60减53",
+      "icon_url": "http://p0.meituan.net/xianfu/f8bc8dffdbc805878aa3801a33f563cd1001.png",
+      "promotion_type": 2
+    }, {
+      "info": "折扣商品7.33折起",
+      "icon_url": "http://p1.meituan.net/xianfu/9c997ecce6150671b8459738a26f8bd9767.png",
+      "promotion_type": 2
+    }, {
+      "info": "新用户立减2元,首次使用银行卡支付最高再减3元",
+      "icon_url": "http://p0.meituan.net/xianfu/019d1bbb1310b1531e6af6172c9a5095581.png",
+      "promotion_type": 2
+    }]
+  }]
+}
+{"status":200,"message":"获取餐馆列表成功","data":[{"_id":"5ac5f0f93714cc2d644f4bd6","id":42,"name":"金牌隆江猪脚饭","month_sales":68,"month_sales_tip":"月售68笔","wm_poi_score":2.3,"delivery_score":0.7,"quality_score":0,"pack_score":3.9,"food_score":4.3,"delivery_time_tip":"1576.8分钟","third_category":"中式简餐","pic_url":"http://p1.meituan.net/xianfu/cfcdd08c22fc4607ea5fa865dadab7d330004.jpg","shopping_time_start":"8:00","shopping_time_end":"24:00","min_price":10,"min_price_tip":"起送 ￥10","shipping_fee":0,"shipping_fee_tip":"配送 ￥0","bulletin":"","address":"元岭村翠园街9巷20号","call_center":"13326882046/13532849428","distance":"2148.5km","average_price_tip":"人均20","comment_number":40,"lng":"113.854516","lat":"22.900498","__v":0,"created_at":"2018-04-05T05:08:44.533Z","discounts2":[{"info":"满20减18;满45减40;满60减53","icon_url":"http://p0.meituan.net/xianfu/f8bc8dffdbc805878aa3801a33f563cd1001.png","promotion_type":2},{"info":"折扣商品7.33折起","icon_url":"http://p1.meituan.net/xianfu/9c997ecce6150671b8459738a26f8bd9767.png","promotion_type":2},{"info":"新用户立减2元,首次使用银行卡支付最高再减3元","icon_url":"http://p0.meituan.net/xianfu/019d1bbb1310b1531e6af6172c9a5095581.png","promotion_type":2}]}]}
+{
+  "status": 200,
+  "message": "获取餐馆列表成功",
+  "data": [{
+    "_id": "5ac5f0f93714cc2d644f4bd6",
+    "id": 42,
+    "name": "金牌隆江猪脚饭",
+    "month_sales": 68,
+    "month_sales_tip": "月售68笔",
+    "wm_poi_score": 2.3,
+    "delivery_score": 0.7,
+    "quality_score": 0,
+    "pack_score": 3.9,
+    "food_score": 4.3,
+    "delivery_time_tip": "1576.8分钟",
+    "third_category": "中式简餐",
+    "pic_url": "http://p1.meituan.net/xianfu/cfcdd08c22fc4607ea5fa865dadab7d330004.jpg",
+    "shopping_time_start": "8:00",
+    "shopping_time_end": "24:00",
+    "min_price": 10,
+    "min_price_tip": "起送 ￥10",
+    "shipping_fee": 0,
+    "shipping_fee_tip": "配送 ￥0",
+    "bulletin": "",
+    "address": "元岭村翠园街9巷20号",
+    "call_center": "13326882046/13532849428",
+    "distance": "2148.5km",
+    "average_price_tip": "人均20",
+    "comment_number": 40,
+    "lng": "113.854516",
+    "lat": "22.900498",
+    "__v": 0,
+    "created_at": "2018-04-05T05:08:44.533Z",
+    "discounts2": [{
+      "info": "满20减18;满45减40;满60减53",
+      "icon_url": "http://p0.meituan.net/xianfu/f8bc8dffdbc805878aa3801a33f563cd1001.png",
+      "promotion_type": 2
+    }, {
+      "info": "折扣商品7.33折起",
+      "icon_url": "http://p1.meituan.net/xianfu/9c997ecce6150671b8459738a26f8bd9767.png",
+      "promotion_type": 2
+    }, {
+      "info": "新用户立减2元,首次使用银行卡支付最高再减3元",
+      "icon_url": "http://p0.meituan.net/xianfu/019d1bbb1310b1531e6af6172c9a5095581.png",
+      "promotion_type": 2
+    }]
+  }]
+}
+http://localhost:3001/v1/restaurant
+Content-Type: application/x-www-form-urlencoded
+
+name=北京麦当劳西大望路餐厅&third_category=西式简餐&pic_url=http://p0.meituan.net/0.84.63/xianfu/aa86bc1b9a218ea5e094b861c03b59b94873.jpg.webp&shopping_time_start=8:00&shopping_time_end=24:00&min_price=10&shipping_fee=0&bulletin=本店支持开发票，开票金额0元起&address=北京市朝阳区朝外大街昆泰国际中心27，28号商铺&call_center=4000517117&lng=116.475883&lat=39.906583
+name=老北京家常菜（东北菜）&third_category=中式简餐&pic_url=http://p0.meituan.net/0.84.63/xianfu/2aa6935d328cb6442941919ca107421930720.jpg.webp&shopping_time_start=10:00&shopping_time_end=14:00&min_price=10&shipping_fee=0&bulletin=实际支付20元返10元商家代金券&address=北京市朝阳区下甸厂坡村16号平房25幢402&call_center=13699193319&lng=116.475883&lat=39.906583
+name=吉野家(现代城店)&third_category=中式简餐&pic_url=http://p1.meituan.net/0.84.63/xianfu/b82bdbb409f82a6c8be6a51297e1dc3438531.jpg.webp&shopping_time_start=7:00&shopping_time_end=20:00&min_price=10&shipping_fee=0&bulletin=实际支付20元返10元商家代金券&address=北京市朝阳区建国路88号A区B栋3101号&call_center=4008197197&lng=116.475883&lat=39.906583
+name=花家怡园（大望路世茂店）&third_category=中式简餐&pic_url=http://p0.meituan.net/0.84.63/xianfu/cabe8b7b9a75d0e267f1d93b2ebca460105804.png.webp&shopping_time_start=10:00&shopping_time_end=14:00&min_price=10&shipping_fee=0&bulletin=实际支付20元返10元商家代金券&address=建国路甲92号世贸大厦B座三层&call_center=010-51283329&lng=116.475883&lat=39.906583
+name=局气（金地店）&third_category=中式简餐&pic_url=http://p1.meituan.net/0.84.63/xianfu/6fe76c711438c1388de30e0cd40d195217746.jpeg.webp&shopping_time_start=10:00&shopping_time_end=14:00&min_price=10&shipping_fee=0&bulletin=实际支付20元返10元商家代金券&address=北京市朝阳区建国路91号金地中心C座3层&call_center=13263109380&lng=116.475883&lat=39.906583
+name=贝思客蛋糕（Best Cake）&third_category=中式简餐&pic_url=http://p1.meituan.net/0.84.63/xianfu/8c9316a7700db42eb551beb257b465cc42541.jpg.webp&shopping_time_start=10:00&shopping_time_end=14:00&min_price=10&shipping_fee=0&bulletin=实际支付20元返10元商家代金券&address=东三环中路39号建外soho23号楼南B-1102&call_center=13699193319&lng=116.475883&lat=39.906583
+name=西贝莜面村（北京华贸店）&third_category=中式简餐&pic_url=http://p0.meituan.net/0.84.63/xianfu/855b75c4bfca1c51a5c1e65061a865499740.jpeg.webp&shopping_time_start=10:00&shopping_time_end=14:00&min_price=10&shipping_fee=0&bulletin=实际支付20元返10元商家代金券&address=华贸购物中心B1楼,1号线大望路A口&call_center=010-65307678&lng=116.475883&lat=39.906583
+name=八斗鸡（国贸店）&third_category=中式简餐&pic_url=http://p0.meituan.net/0.84.63/xianfu/b2ed61fbaa61ac97032a12ffc62d1cc659635.jpg.webp&shopping_time_start=10:00&shopping_time_end=14:00&min_price=10&shipping_fee=0&bulletin=实际支付20元返10元商家代金券&address=南郎家园1号大北写字楼前(国贸桥东)&call_center=01065680632&lng=116.475883&lat=39.906583
+name=每日优鲜（九龙山店）&third_category=中式简餐&pic_url=http://p1.meituan.net/0.84.63/xianfu/809186f57b7bd5fd279b76ae736a665695060.jpg.webp&shopping_time_start=10:00&shopping_time_end=14:00&min_price=10&shipping_fee=0&bulletin=实际支付20元返10元商家代金券&address=广渠路28号院203号楼1层203-北118&call_center=15600440606,17611627902,4009911977&lng=116.475883&lat=39.906583
+name=云海肴·云南菜（金地广场店）&third_category=中式简餐&pic_url=http://p0.meituan.net/0.84.63/xianfu/ec41b1588ad603ad6f56d1ae437a01fe29312.jpg.webp&shopping_time_start=10:00&shopping_time_end=14:00&min_price=10&shipping_fee=0&bulletin=实际支付20元返10元商家代金券&address=朝阳区建国路91号金地广场3楼&call_center=85712599,85712590&lng=116.475883&lat=39.906583
+
+
+food
+
+0: {id: 143, name: "麦套餐Combos", restaurant_id: 32, created_at: "2018-04-05T05:08:44.537Z", spus: Array(17), …}created_at: "2018-04-05T05:08:44.537Z"id: 143name: "麦套餐Combos"restaurant_id: 32spus: (17) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]0: {_id: "5ac5b0913714cc2d644f461e", id: 1089, restaurant_id: 32, category_id: 143, name: "套餐8：海苔鸡肉卷+辣翅+可乐", …}1: {_id: "5ac5b0913714cc2d644f4624", id: 1092, restaurant_id: 32, category_id: 143, name: "套餐6：墨西哥卷+辣翅+可乐", …}2: {_id: "5ac5b0913714cc2d644f461c", id: 1088, restaurant_id: 32, category_id: 143, name: "套餐3：虾堡+鸡米花+可乐", …}3: {_id: "5ac5b0913714cc2d644f4620", id: 1093, restaurant_id: 32, category_id: 143, name: "套餐16：蜜汁烤鸡+可乐2罐", …}4: {_id: "5ac5b0913714cc2d644f4622", id: 1085, restaurant_id: 32, category_id: 143, name: "套餐12：鸡堡+墨西哥卷+辣翅", …}5: {_id: "5ac5b0913714cc2d644f462a", id: 1095, restaurant_id: 32, category_id: 143, name: "套餐17：韩式烤鸡+可乐1罐", …}6: {_id: "5ac5b0913714cc2d644f4632", id: 1097, restaurant_id: 32, category_id: 143, name: "套餐9：鸡堡+墨西哥卷+可乐", …}7: {_id: "5ac5b0913714cc2d644f4638", id: 1098, restaurant_id: 32, category_id: 143, name: "套餐14：韩式风味汉堡+辣翅+可乐", …}8: {_id: "5ac5b0913714cc2d644f4630", id: 1091, restaurant_id: 32, category_id: 143, name: "套餐11：台湾大鸡排+辣翅+可乐", …}9: {_id: "5ac5b0913714cc2d644f4634", id: 1102, restaurant_id: 32, category_id: 143, name: "套餐15：泰式大鸡腿+辣翅+地瓜丸3个+可乐", …}10: {_id: "5ac5b0913714cc2d644f4628", id: 1090, restaurant_id: 32, category_id: 143, name: "套餐13：鸡米花+辣翅+鸡块+地瓜丸3个", …}11: {_id: "5ac5b0913714cc2d644f462c", id: 1087, restaurant_id: 32, category_id: 143, name: "套餐7：韩式鸡肉卷+川香鸡柳+可乐", …}12: {_id: "5ac5b0913714cc2d644f462e", id: 1094, restaurant_id: 32, category_id: 143, name: "套餐1：鸡堡+薯条+可乐", …}13: {_id: "5ac5b0913714cc2d644f463c", id: 1099, restaurant_id: 32, category_id: 143, name: "套餐4：板烧堡+辣翅+可乐", …}14: {_id: "5ac5b0913714cc2d644f4626", id: 1086, restaurant_id: 32, category_id: 143, name: "套餐2：鸡堡+辣翅+可乐", …}15: {_id: "5ac5b0913714cc2d644f463a", id: 1100, restaurant_id: 32, category_id: 143, name: "套餐5：墨西哥卷+薯条+可乐", …}16: {_id: "5ac5b0913714cc2d644f463e", id: 1101, restaurant_id: 32, category_id: 143, name: "套餐10：鸡堡+虾堡+可乐", …}length: 17__proto__: Array(0)__v: 17__proto__: Object1: {id: 144, name: "热销", restaurant_id: 32, created_at: "2018-04-05T05:08:44.537Z", spus: Array(10), …}2: {id: 146, name: "  可乐加1元换饮品", restaurant_id: 32, created_at: "2018-04-05T05:08:44.537Z", spus: Array(1), …}3: {id: 145, name: "麦堡M.Burger", restaurant_id: 32, created_at: "2018-04-05T05:08:44.537Z", spus: Array(13), …}4: {id: 147, name: "麦小吃M.Nosh", restaurant_id: 32, created_at: "2018-04-05T05:08:44.537Z", spus: Array(8), …}5: {id: 148, name: "麦饮料M.Drink", restaurant_id: 32, created_at: "2018-04-05T05:08:44.537Z", spus: Array(2), …}length: 6__proto__: Array(0)
+
+http://localhost:3001/v1/category
+category_name=热销&restaurant_id=5&icon=http://p1.meituan.net/aichequan/87f966955f693102d67daf2ec44b58411361.png
+category_name=麦乐鸡 中华蘸酱&restaurant_id=5&icon=
+category_name=热卖产品&restaurant_id=5&icon=
+category_name=主食&restaurant_id=5&icon=
+category_name=超值套餐&restaurant_id=5&icon=
+category_name=小食&restaurant_id=5&icon=
+category_name=饮品&restaurant_id=5&icon=
+
+
+http://localhost:3001/v1/food
+Content-Type: application/json
+restaurant_id=5&category_id=2&food_name=麦辣鸡翅2块&min_price=11.5&description=麦辣鸡翅2块（主要原料：鸡肉，腌料，裹粉，油）&pic_url=https://img.meituan.net/100.100.90/xianfudwm/43ad294d15e06e76794766da1e5c1c6d288423.png&skus=[{description: "", price: "11.5"}]
+{
+        "restaurant_id":5,
+        "category_id":2,
+        "food_name":"麦辣鸡翅2块",
+        "min_price":11.5,
+        "description": "麦辣鸡翅2块（主要原料：鸡肉，腌料，裹粉，油）",
+         "pic_url":"https://img.meituan.net/100.100.90/xianfudwm/43ad294d15e06e76794766da1e5c1c6d288423.png",
+        "skus":[{"description": "", "price": "11.5"}]
+}
+{
+"restaurant_id":5,
+"category_id":2,
+"food_name":"经典麦辣鸡腿汉堡",
+"min_price":20,
+"description": "主要原料：面包、鸡肉、生菜、风味沙拉酱",
+"pic_url":"https://img.meituan.net/100.100.90/xianfudwm/f975bf41cf9069e40a58b836dd87b5c9322631.png",
+"skus":[{"description": "", "price": "20"}]
+}
+{
+"restaurant_id":5,
+"category_id":2,
+"food_name":"麦辣鸡翅4块",
+"min_price":23,
+"description": "麦辣鸡翅4块（主要原料：鸡肉，腌料，裹粉，油）",
+"pic_url":"https://img.meituan.net/100.100.90/xianfudwm/69bcc29179085db1d9faeffd402187e1312665.png",
+"skus":[{"description": "", "price": "23"}]
+}
+{
+"restaurant_id":5,
+"category_id":2,
+"food_name":"薯条（大）",
+"min_price":13,
+"description": "主要原料：薯条，油，盐",
+"pic_url":"https://img.meituan.net/100.100.90/xianfudwm/8b3d6e1d4d74e389e8f52dcff56b15f0254639.png",
+"skus":[{"description": "", "price": "13"}]
+}
+
+
+{
+"restaurant_id":5,
+"category_id":4,
+"food_name":"经典巨无霸",
+"min_price":23,
+"description": "主要原料：面包、牛肉、生菜、洋葱、腌黄瓜、芝士、风味沙拉酱",
+"pic_url":"https://img.meituan.net/100.100.90/xianfudwm/3d1b7f4d23ed4a5beb5dd6d38a7e127b375632.png",
+"skus":[{"description": "", "price": "23"}]
+}
+{
+"restaurant_id":5,
+"category_id":4,
+"food_name":"经典巨无霸中薯套餐",
+"min_price":35,
+"description": "1个巨无霸 1份薯条(中) 1杯可口可乐(中)",
+"pic_url":"https://img.meituan.net/100.100.90/xianfudwm/5a2b3e592dd2e8827ab7fdede3f7ce85370380.png",
+"skus":[{"description": "", "price": "35"}]
+}
+{
+"restaurant_id":5,
+"category_id":4,
+"food_name":"经典巨无霸小玉套餐",
+"min_price":35,
+"description": "1个巨无霸 1个玉米杯(小) 1杯可口可乐(中)",
+"pic_url":"https://img.meituan.net/100.100.90/xianfudwm/5a2b3e592dd2e8827ab7fdede3f7ce85370380.png",
+"skus":[{"description": "", "price": "35"}]
+}
+{
+"restaurant_id":5,
+"category_id":4,
+"food_name":"经典巨无霸大薯套餐",
+"min_price":39,
+"description": "1个巨无霸 1份薯条(大) 1杯可口可乐(中)",
+"pic_url":"https://img.meituan.net/100.100.90/xianfudwm/5a2b3e592dd2e8827ab7fdede3f7ce85370380.png",
+"skus":[{"description": "", "price": "39"}]
+}
+{
+"restaurant_id":5,
+"category_id":4,
+"food_name":"经典巨无霸大玉套餐",
+"min_price":39,
+"description": "1个巨无霸 1个玉米杯(大) 1杯可口可乐(中)",
+"pic_url":"https://img.meituan.net/100.100.90/xianfudwm/5a2b3e592dd2e8827ab7fdede3f7ce85370380.png",
+"skus":[{"description": "", "price": "39"}]
+}
+{
+"restaurant_id":5,
+"category_id":4,
+"food_name":"经典巨无霸中玉套餐",
+"min_price":39,
+"description": "1个巨无霸 1个玉米杯(大) 1杯可口可乐(中)",
+"pic_url":"https://img.meituan.net/100.100.90/xianfudwm/5a2b3e592dd2e8827ab7fdede3f7ce85370380.png",
+"skus":[{"description": "", "price": "39"}]
+}
+
+
+{
+"restaurant_id":5,
+"category_id":5,
+"food_name":"经典巨无霸 汉堡",
+"min_price":23,
+"description": "主要原料：面包、牛肉、生菜、洋葱、腌黄瓜、芝士、风味沙拉酱",
+"pic_url":"https://img.meituan.net/100.100.90/xianfudwm/3d1b7f4d23ed4a5beb5dd6d38a7e127b375632.png",
+"skus":[{"description": "", "price": "23"}]
+}
+{
+"restaurant_id":5,
+"category_id":5,
+"food_name":"经典麦辣鸡腿汉堡",
+"min_price":20,
+"description": "主要原料：面包、鸡肉、生菜、风味沙拉酱",
+"pic_url":"https://img.meituan.net/100.100.90/xianfudwm/3d1b7f4d23ed4a5beb5dd6d38a7e127b375632.png",
+"skus":[{"description": "", "price": "20"}]
+}
+{
+"restaurant_id":5,
+"category_id":5,
+"food_name":"原味板烧鸡腿堡",
+"min_price":20,
+"description": "主要原料：面包、鸡肉、生菜、风味沙拉酱",
+"pic_url":"https://img.meituan.net/100.100.90/xianfudwm/3d1b7f4d23ed4a5beb5dd6d38a7e127b375632.png",
+"skus":[{"description": "", "price": "20"}]
+}
+{
+"restaurant_id":5,
+"category_id":5,
+"food_name":"麦香鸡",
+"min_price":13,
+"description": "主要原料：面包、鸡肉、生菜、风味沙拉酱",
+"pic_url":"https://img.meituan.net/100.100.90/xianfudwm/3d1b7f4d23ed4a5beb5dd6d38a7e127b375632.png",
+"skus":[{"description": "", "price": "13"}]
+}
+
+
+
+{
+"restaurant_id":5,
+"category_id":6,
+"food_name":"新秀巨无霸配中薯套餐",
+"min_price":33,
+"description": "新秀巨无霸1个 中可1杯 中薯1份（主要原料：牛肉，巨无霸酱，生菜，芝士片，洋葱，酱菜，面包，可乐，土豆）",
+"pic_url":"https://img.meituan.net/100.100.90/xianfudwm/3d1b7f4d23ed4a5beb5dd6d38a7e127b375632.png",
+"skus":[{"description": "", "price": "33"}]
+}
+{
+"restaurant_id":5,
+"category_id":6,
+"food_name":"新秀巨无霸配小玉套餐",
+"min_price":33,
+"description": "新秀巨无霸1个 中可1杯 小玉米1份（主要原料：牛肉，巨无霸酱，生菜，芝士片，洋葱，酱菜，面包，可乐，土豆）",
+"pic_url":"https://img.meituan.net/100.100.90/xianfudwm/3d1b7f4d23ed4a5beb5dd6d38a7e127b375632.png",
+"skus":[{"description": "", "price": "33"}]
+}
+{
+"restaurant_id":5,
+"category_id":6,
+"food_name":"新秀巨无霸配大薯套餐",
+"min_price":37,
+"description": "新秀巨无霸1个 中可1杯 大薯1份（主要原料：牛肉，巨无霸酱，生菜，芝士片，洋葱，酱菜，面包，可乐，土豆）",
+"pic_url":"https://img.meituan.net/100.100.90/xianfudwm/3d1b7f4d23ed4a5beb5dd6d38a7e127b375632.png",
+"skus":[{"description": "", "price": "37"}]
+}
+{
+"restaurant_id":5,
+"category_id":6,
+"food_name":"新秀巨无霸配大玉套餐",
+"min_price":37,
+"description": "新秀巨无霸1个 中可1杯 大玉米1份（主要原料：牛肉，巨无霸酱，生菜，芝士片，洋葱，酱菜，面包，可乐，土豆）",
+"pic_url":"https://img.meituan.net/100.100.90/xianfudwm/3d1b7f4d23ed4a5beb5dd6d38a7e127b375632.png",
+"skus":[{"description": "", "price": "37"}]
+}
+{
+"restaurant_id":5,
+"category_id":6,
+"food_name":"经典巨无霸配中薯套餐",
+"min_price":35,
+"description": "巨无霸1个 中可1杯 中薯1份（主要原料：牛肉，巨无霸酱，生菜，芝士片，洋葱，酱菜，面包，可乐，土豆）",
+"pic_url":"https://img.meituan.net/100.100.90/xianfudwm/3d1b7f4d23ed4a5beb5dd6d38a7e127b375632.png",
+"skus":[{"description": "", "price": "33"}]
+}
+{
+"restaurant_id":5,
+"category_id":6,
+"food_name":"经典巨无霸配小玉套餐",
+"min_price":35,
+"description": "巨无霸1个 中可1杯 小玉米1份（主要原料：牛肉，巨无霸酱，生菜，芝士片，洋葱，酱菜，面包，可乐，土豆）",
+"pic_url":"https://img.meituan.net/100.100.90/xianfudwm/3d1b7f4d23ed4a5beb5dd6d38a7e127b375632.png",
+"skus":[{"description": "", "price": "35"}]
+}
+{
+"restaurant_id":5,
+"category_id":6,
+"food_name":"经典巨无霸配大薯套餐",
+"min_price":39,
+"description": "巨无霸1个 中可1杯 薯条1份（主要原料：牛肉，巨无霸酱，生菜，芝士片，洋葱，酱菜，面包，可乐，土豆）",
+"pic_url":"https://img.meituan.net/100.100.90/xianfudwm/3d1b7f4d23ed4a5beb5dd6d38a7e127b375632.png",
+"skus":[{"description": "", "price": "39"}]
+}
+{
+"restaurant_id":5,
+"category_id":6,
+"food_name":"经典巨无霸配大玉套餐",
+"min_price":39,
+"description": "巨无霸1个 中可1杯 大玉米1份（主要原料：牛肉，巨无霸酱，生菜，芝士片，洋葱，酱菜，面包，可乐，土豆）",
+"pic_url":"https://img.meituan.net/100.100.90/xianfudwm/3d1b7f4d23ed4a5beb5dd6d38a7e127b375632.png",
+"skus":[{"description": "", "price": "39"}]
+}
+{
+"restaurant_id":5,
+"category_id":6,
+"food_name":"大将巨无霸配中薯套餐",
+"min_price":43,
+"description": "大将巨无霸1个 中可1杯 中薯1份（主要原料：牛肉，巨无霸酱，生菜，芝士片，洋葱，酱菜，面包，可乐，土豆）",
+"pic_url":"https://img.meituan.net/100.100.90/xianfudwm/3d1b7f4d23ed4a5beb5dd6d38a7e127b375632.png",
+"skus":[{"description": "", "price": "43"}]
+}
+{
+"restaurant_id":5,
+"category_id":6,
+"food_name":"大将巨无霸配小玉套餐",
+"min_price":43,
+"description": "大将巨无霸1个 中可1杯 小玉米1份（主要原料：牛肉，巨无霸酱，生菜，芝士片，洋葱，酱菜，面包，可乐，土豆）",
+"pic_url":"https://img.meituan.net/100.100.90/xianfudwm/3d1b7f4d23ed4a5beb5dd6d38a7e127b375632.png",
+"skus":[{"description": "", "price": "43"}]
+}
+
+{
+"restaurant_id":5,
+"category_id":7,
+"food_name":"麦辣鸡翅4块",
+"min_price":23,
+"description": "麦辣鸡翅4块（主要原料：鸡肉，腌料，裹粉，油）",
+"pic_url":"https://img.meituan.net/100.100.90/xianfudwm/69bcc29179085db1d9faeffd402187e1312665.png",
+"skus":[{"description": "", "price": "23"}]
+}
