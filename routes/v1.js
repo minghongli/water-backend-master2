@@ -18,7 +18,9 @@ router.get("/location", Cites.location);                 //定位
 // router.get('/my_restaurant', Auth.authAdmin, Restaurant.myRestaurant);      //获取我的餐馆
 
 // router.post('/addCategory', Goods.addCategory);         //添加品牌分类
-router.post('/addGoods', Auth.authAdmin, Goods.addGood);         //添加商品
+//router.post('/addGoods', Auth.authAdmin, Goods.addGood);         //添加商品
+router.post('/addGoods', Goods.addGood);         //添加商品
+
 router.delete('/deleteGood/:good_id', Auth.authAdmin, Goods.deleteGood);      //删除商品
 router.get('/getGoodsList', Goods.getGoodsList);         //获取指定品牌商品列表
 

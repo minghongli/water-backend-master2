@@ -6,7 +6,7 @@ class Goods extends BaseClass {
 	constructor() {
 		super();
 		//this.addBrand = this.addBrand.bind(this);
-		this.addGood = this.addGood.bind(this);
+		//this.addGood = this.addGood.bind(this);
 	}
 
 		// //添加品牌
@@ -85,14 +85,13 @@ class Goods extends BaseClass {
 
 	//添加商品
 	async addGood(req, res, next) {
-
 		console.info(req.body);
 		let {
 			name, brand, capacity, package_type,
 			price,
 			description,
 			pic_url,
-			skus
+			//skus
 		} = req.body;
 		if (!name) {
 			res.send({
@@ -106,18 +105,21 @@ class Goods extends BaseClass {
 			// 	let sku_id = await this.getId('sku_id');
 			// 	skus[i]['id'] = sku_id;
 			// }	
+			console.log(11)
 			let month_saled = 0; //Math.ceil(Math.random() * 50);  //随机生成一个月售数量
-			let good_id = await this.getId('good_id');
-			console.log(good_id);
+			//let good_id = await this.getId('good_id');
+			console.log(11)
+			//console.log(good_id);
 			let good_data = {
-				id: good_id,category_id:1,
+				id: 1,//good_id
+				//category_id:1,
 				brand:1,
 				name, capacity:1, package_type:1,
 				price,
 				description,
 				pic_url:'',
 				sequence:1,
-				month_saled,
+				month_saled:0,
 				month_saled_content: `${month_saled}`,
 				comment_number:0
 			}
