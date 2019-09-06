@@ -8,7 +8,7 @@ const adminSchema = new Schema({
     password: String,	//密码
     openid:String,
     session_key:String,
-    id: Number,			//id
+    //id: Number,			//id
     create_time: {
         type: Date,
         default: new Date()

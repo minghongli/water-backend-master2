@@ -14,8 +14,8 @@ class Order extends BaseClass {
 
     //下订单
     async makeOrder(req, res, next) {
-        let {restaurant_id, goods, address_id, remark = ''} = req.body;
-        if (!restaurant_id && !goods && !address_id) {
+        let { goods, address, remark = '' } = req.body;
+        if (!goods && !address) {
             res.send({
                 status: -1,
                 message: '下订单失败，参数有误'
@@ -24,32 +24,31 @@ class Order extends BaseClass {
         }
         try {
             let promiseArr = [];
-            let restaurant = await RestaurantModel.findOne({id: restaurant_id});     //找到该餐馆
-            promiseArr.push(this._calcTotalPrice(restaurant.shipping_fee, goods));       //计算总价格
-            promiseArr.push(AddressModel.findOne({id: address_id}));                       //地址信息
-            promiseArr.push(AdminModel.findOne({id: req.session.user_id}));               //用户信息
-            promiseArr.push(this.getId('order_id'));                                    //订单号
+            //let restaurant = await RestaurantModel.findOne({id: restaurant_id});     //找到该餐馆
+            promiseArr.push(this._calcTotalPrice(goods));       //计算总价格
+            //promiseArr.push(AddressModel.findOne({id: address_id}));                       //地址信息
+            promiseArr.push(AdminModel.findOne({ id: '5d10e28a1328ca434ce0ff00' }));  //req.session.user_id             //用户信息
+            //promiseArr.push(this.getId('order_id'));                                    //订单号
             Promise.all(promiseArr).then(async (values) => {
                 let order_data = {
                     total_price: values[0].total_price,
                     goods: values[0].order_goods,
-                    address: values[1]._id,
-                    user_id: values[2]._id,
-                    id: values[3],
+                    address: address,
+                    user_id: "id",//values[2]._id
+                    //id: values[3],
                     remark,
-                    restaurant_id,
                     status: '未支付',
                     code: 0,
-                    restaurant: restaurant._id,
-                    shipping_fee: restaurant.shipping_fee,
+                    //shipping_fee: restaurant.shipping_fee,
                     create_time_timestamp: Math.floor(new Date().getTime() / 1000)
                 }
                 let order = new OrderModel(order_data);
                 await order.save();
+                let order_id = order.get("id");
                 res.send({
                     status: 200,
                     message: '提交订单成功，请尽快支付',
-                    order_id: values[3],
+                    order_id: order_id,//values[3],
                     total_price: values[0].total_price,
                 })
             });
@@ -61,38 +60,43 @@ class Order extends BaseClass {
             })
         }
     }
-	
-	
-	//修改订单
-	async updateOrder(req,res,next){
-		
-	}
-	//获取所有订单列表
-	async getOrders(req, res, next) {
-	    let {offset = 0, limit = 10} = req.query;
-	    try {
-	        let orders = await OrderModel.find({
-	            code: 200
-	        }, '-_id').limit(Number(limit)).skip(Number(offset));
-	        res.send({
-	            status: 200,
-	            data: orders,
-	            message: '获取订单列表成功'
-	        })
-	    } catch (err) {
-	        console.log('获取订单列表失败', err);
-	        res.send({
-	            status: -1,
-	            message: '获取订单列表失败'
-	        })
-	    }
-	}
+
+
+    //修改订单
+    async updateOrder(req, res, next) {
+
+    }
+    //获取所有订单列表
+    async getOrders(req, res, next) {
+        let { page = 0, limit = 10 } = req.query;
+        //let {offset = 0, limit = 10} = req.query;
+        try {
+            let orders = await OrderModel.find({
+                code: 0
+            }, '-_id').skip(Number(page) * (Number(limit))).limit(Number(limit)).sort({'_id':-1});
+            //.sort({'_id':-1}).exec(cb);
+            //await RestaurantModel.find({}, '-_id').limit(Number(limit)).skip(Number(offset)).sort({sort_type: 1});
+
+            
+            res.send({
+                status: 200,
+                data: orders,
+                message: '获取订单列表成功'
+            })
+        } catch (err) {
+            console.log('获取订单列表失败', err);
+            res.send({
+                status: -1,
+                message: '获取订单列表失败'
+            })
+        }
+    }
 
     //获取用户订单列表
     async getUserOrders(req, res, next) {
-        let {offset = 0, limit = 10} = req.query;
+        let { offset = 0, limit = 10 } = req.query;
         try {
-            let userInfo = await AdminModel.findOne({id: req.session.user_id});
+            let userInfo = await AdminModel.findOne({ id: req.session.user_id });
             console.log(userInfo)
             let orders = await OrderModel.find({
                 code: 200,
@@ -123,7 +127,7 @@ class Order extends BaseClass {
             return;
         }
         try {
-            let order = await OrderModel.findOne({id: order_id})//.populate([{path: 'address'}]);
+            let order = await OrderModel.findOne({ id: order_id })//.populate([{path: 'address'}]);
             if (!order) {
                 res.send({
                     status: -1,
@@ -150,21 +154,22 @@ class Order extends BaseClass {
     async _calcTotalPrice(goods) {////配送费
         let total_price = 0, order_goods = [];
         for (let i = 0; i < goods.length; i++) {
-            let good = await GoodsModel.findOne({'skus.id': goods[i]['skus_id']});  //根据sku_id找到food
-            let sku = good.skus.filter(sku => {
-                return sku.id == goods[i]['skus_id']
-            })
+            let good = await GoodsModel.findOne({ '_id': goods[i]['id'] });
+            // let good = await GoodsModel.findOne({'skus.id': goods[i]['skus_id']});  //根据sku_id找到food
+            // let sku = good.skus.filter(sku => {
+            //     return sku.id == goods[i]['skus_id']
+            // })
             order_goods.push({
-                name: food['name'],
-                price: sku[0]['price'],
+                name: good['name'],
+                price: good['price'],
                 num: goods[i]['num'],
-                total_price: Number(sku[0].price) * Number(goods[i]['num']),
-                spec: sku[0]['spec'] || '',
-                pic_url: food['pic_url']
+                total_price: Number(good['price']) * Number(goods[i]['num']),
+                //spec: sku[0]['spec'] || '',//规格描述
+                pic_url: good['pic_url']
             })
-            total_price += Number(sku[0].price) * Number(goods[i]['num']);
+            total_price += Number(good['price']) * Number(goods[i]['num']);
         }
-        return {total_price, order_goods};
+        return { total_price, order_goods };
     }
 
     //计算剩余支付时间

@@ -9,6 +9,8 @@ import bodyParser from 'body-parser'
 import config from './config'
 
 const app = express();
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json({}));
 
 app.all('*', (req, res, next) => {
     //res.header("Access-Control-Allow-Origin", req.headers.origin || '*');
@@ -25,8 +27,6 @@ app.all('*', (req, res, next) => {
 });
 
 const MongoStore = connectMongo(session);
-app.use(bodyParser.urlencoded({extended: false}))
-app.use(bodyParser.json({}));
 app.use(cookieParser());
 app.use(session({
     name: 'water-session',
@@ -50,3 +50,6 @@ console.log('*********************************')
 app.listen(config.port);
 
 module.exports = app;
+
+
+

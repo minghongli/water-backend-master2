@@ -3,11 +3,13 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema;
 
 const orderSchema = new Schema({
-	id: Number, //id
-	user_id: {
-		type: Schema.ObjectId,
-		ref: 'Admin'
-	}, //用户id
+	user_id:String,
+	// user_id: {
+	// 	type: Schema.ObjectId,
+	// 	ref: 'Admin'
+	// }, //用户id
+
+
 	//     restaurant: {type: Schema.ObjectId, ref: 'Restaurant'},
 	//     restaurant_id: Number,
 	total_price: Number,
@@ -25,7 +27,7 @@ const orderSchema = new Schema({
 			default: false
 		} //是否已经评价该订单了
 	}],
-	shipping_fee: Number,
+	//shipping_fee: Number,
 // 	address: {
 // 		type: Schema.ObjectId,
 // 		ref: 'Address'

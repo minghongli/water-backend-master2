@@ -38,9 +38,13 @@ router.get('/comment_count', Comment.commentCount);      //获取评论数量
 router.delete('/comment', Auth.authUser, Comment.deleteComment);              //删除评论
 
 //订单
-router.post('/order', Auth.authUser, Order.makeOrder);         //下订单
-router.get('/orders', Auth.authUser, Order.getOrders);             //获取订单列表
-router.get('/order/:order_id', Auth.authUser, Order.getOrder);             //获取指定订单
+// router.post('/order', Auth.authUser, Order.makeOrder);         //下订单
+// router.get('/getOrders', Auth.authUser, Order.getOrders);             //获取订单列表
+// router.get('/getOrder/:order_id', Auth.authUser, Order.getOrder);             //获取指定订单
+
+router.post('/order', Order.makeOrder);         //下订单
+router.get('/getOrders', Order.getOrders);             //获取订单列表
+router.get('/getOrder/:order_id', Order.getOrder);             //获取指定订单
 
 //支付
 router.post('/pay', Auth.authUser, Pay.initPay);                    //初始化支付
