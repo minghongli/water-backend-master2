@@ -17,6 +17,7 @@ class Company extends BaseClass {
 			invoice,
 			demandOfMonth,singleNumber,brand
 		} = req.body;
+		console.info(req.body);
 		if (!companyName) {
 			res.send({
 				status: -1,
@@ -30,7 +31,7 @@ class Company extends BaseClass {
 			}
 			let addCompany = new CompanyModel(company_data,false);
 			console.log(2222);
-			console.info(addGoods)
+			console.info(addCompany)
 			await addCompany.save();
 			console.log(333);
 			res.send({

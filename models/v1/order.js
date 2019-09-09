@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema;
 
 const orderSchema = new Schema({
+	number:String,//订单编号
 	user_id:String,
 	// user_id: {
 	// 	type: Schema.ObjectId,
@@ -41,6 +42,7 @@ const orderSchema = new Schema({
 	remark: String,
 	status: String,//支付状态 未支付 和 已支付
 	code: Number, //支付状态码 未支付0 和 已支付200
+	delivery_state:Number,      //配送状态 未配送0 配送中10 已完成20
 	create_time: {
 		type: Date,
 		default: new Date()

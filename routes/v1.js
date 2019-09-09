@@ -44,7 +44,9 @@ router.delete('/comment', Auth.authUser, Comment.deleteComment);              //
 
 router.post('/order', Order.makeOrder);         //下订单
 router.get('/getOrders', Order.getOrders);             //获取订单列表
-router.get('/getOrder/:order_id', Order.getOrder);             //获取指定订单
+router.get('/getOrderById/:order_id', Order.getOrder);             //获取指定订单
+router.get('/getUserOrders', Order.getUserOrders);             //获取用户订单列表
+router.post('/updateOrder', Order.updateOrder);             //更新订单
 
 //支付
 router.post('/pay', Auth.authUser, Pay.initPay);                    //初始化支付

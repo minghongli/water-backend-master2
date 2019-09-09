@@ -3,6 +3,7 @@ import OrderModel from "../../models/v1/order"
 import AddressModel from '../../models/admin/address'
 import GoodsModel from '../../models/v1/goods'
 import AdminModel from '../../models/admin/admin'
+import { getTokenByCode } from '../../utils/wxService'
 
 class Order extends BaseClass {
     constructor() {
@@ -14,8 +15,8 @@ class Order extends BaseClass {
 
     //下订单
     async makeOrder(req, res, next) {
-        let { goods, address, remark = '' } = req.body;
-        if (!goods && !address) {
+        let { openid, goods, address, remark = '' } = req.body;
+        if (!goods || !address) {
             res.send({
                 status: -1,
                 message: '下订单失败，参数有误'
@@ -27,18 +28,21 @@ class Order extends BaseClass {
             //let restaurant = await RestaurantModel.findOne({id: restaurant_id});     //找到该餐馆
             promiseArr.push(this._calcTotalPrice(goods));       //计算总价格
             //promiseArr.push(AddressModel.findOne({id: address_id}));                       //地址信息
-            promiseArr.push(AdminModel.findOne({ id: '5d10e28a1328ca434ce0ff00' }));  //req.session.user_id             //用户信息
+            //promiseArr.push(AdminModel.findOne({ id: '5d10e28a1328ca434ce0ff00' }));  //req.session.user_id             //用户信息
+            //promiseArr.push(getTokenByCode(code));
             //promiseArr.push(this.getId('order_id'));                                    //订单号
             Promise.all(promiseArr).then(async (values) => {
                 let order_data = {
+                    number: Math.random().toString(9).substr(2),//订单编号
                     total_price: values[0].total_price,
                     goods: values[0].order_goods,
                     address: address,
-                    user_id: "id",//values[2]._id
+                    user_id: openid,//values[2]._id
                     //id: values[3],
                     remark,
                     status: '未支付',
                     code: 0,
+                    delivery_state: 0,//配送状态
                     //shipping_fee: restaurant.shipping_fee,
                     create_time_timestamp: Math.floor(new Date().getTime() / 1000)
                 }
@@ -64,7 +68,32 @@ class Order extends BaseClass {
 
     //修改订单
     async updateOrder(req, res, next) {
-
+        let { orderId, state } = req.body;
+        if (!orderId || !state) {
+            res.send({
+                status: -1,
+                message: '更新订单状态失败，参数有误'
+            })
+        }
+        try {
+            console.info(11);
+            let order = await OrderModel.findOne({ _id: orderId });
+            console.info(order);
+            //order.status = '支付成功';
+            order.delivery_state = state;
+            await order.save();
+            res.send({
+                status: 200,
+                message: '更新订单成功',
+                order_id: orderId
+            })
+        } catch (err) {
+            console.log('更新订单失败', err);
+            res.send({
+                status: -1,
+                message: '更新订单失败'
+            })
+        }
     }
     //获取所有订单列表
     async getOrders(req, res, next) {
@@ -73,11 +102,11 @@ class Order extends BaseClass {
         try {
             let orders = await OrderModel.find({
                 code: 0
-            }, '-_id').skip(Number(page) * (Number(limit))).limit(Number(limit)).sort({'_id':-1});
+            }, '-_id').skip(Number(page) * (Number(limit))).limit(Number(limit)).sort({ '_id': -1 });
             //.sort({'_id':-1}).exec(cb);
             //await RestaurantModel.find({}, '-_id').limit(Number(limit)).skip(Number(offset)).sort({sort_type: 1});
 
-            
+
             res.send({
                 status: 200,
                 data: orders,
@@ -94,14 +123,15 @@ class Order extends BaseClass {
 
     //获取用户订单列表
     async getUserOrders(req, res, next) {
-        let { offset = 0, limit = 10 } = req.query;
+        //let { offset = 0, limit = 10 } = req.query;
+        let { page = 0, limit = 10 } = req.query;
         try {
             let userInfo = await AdminModel.findOne({ id: req.session.user_id });
             console.log(userInfo)
             let orders = await OrderModel.find({
                 code: 200,
                 user_id: userInfo._id
-            }, '-_id').limit(Number(limit)).skip(Number(offset));//.populate([{path: 'restaurant'}])
+            }, '-_id').limit(Number(limit)).skip(Number(page) * (Number(limit)));//.populate([{path: 'restaurant'}])
             res.send({
                 status: 200,
                 data: orders,
