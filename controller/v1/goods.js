@@ -200,5 +200,34 @@ class Goods extends BaseClass {
 		}
 	}
 
+	//获取商品详情
+	async getGoodsDetail(req,res,next){
+		console.info(req);
+		//let id = req.query.id;
+		let id=req.params.good_id;
+		if (!id) {
+			res.send({
+				status: -1,
+				message: '获取商品详情失败，参数有误!'
+			})
+			return;
+		}
+		let goods={};
+		try {
+			goods = await GoodModel.find({_id: id});//.limit(Number(limit)).skip(Number(offset));
+			res.send({
+				status: 200,
+				message: '获取商品详情成功',
+				result: goods
+			})
+		} catch (err) {
+			console.log('获取商品详情失败', err);
+			res.send({
+				status: -1,
+				message: '获取商品详情失败'
+			})
+		}
+	}
+
 }
 export default new Goods();

@@ -8,7 +8,8 @@ module.exports = {
     AccessKey: '',   //七牛云accessKey
     SecretKey: '',    //七牛云secretKey
     tencentkey: '4Y6BZ-HRBK3-O3F3U-YC76Y-FVSRJ-Z4B6B',        //腾讯位置secreKey
-    tencentkey2: ''        //腾讯位置服务secreKey
+    tencentkey2: '',        //腾讯位置服务secreKey
+    encryptionKey: "minghong",
 }
 
 

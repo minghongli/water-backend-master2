@@ -23,6 +23,7 @@ router.post('/addGoods', Goods.addGood);         //添加商品
 
 router.delete('/deleteGood/:good_id', Auth.authAdmin, Goods.deleteGood);      //删除商品
 router.get('/getGoodsList', Goods.getGoodsList);         //获取指定品牌商品列表
+router.get('/getGoodsDetail/:good_id', Goods.getGoodsDetail);         //获取指定品牌商品列表
 
 // router.get('/category/:restaurant_id', Restaurant.getCategory);    //获取指定餐馆食物分类
 // router.post('/good', goods.addGood);         //添加食物

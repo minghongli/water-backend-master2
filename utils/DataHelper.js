@@ -2,6 +2,7 @@
  * Created by Fan on 2016/6/27.
  */
 var cr = require('crypto');
+import config from '../config'
 
 
 // //加密
@@ -16,7 +17,7 @@ var cr = require('crypto');
 
 //加密
 exports.Encryption = function (str) {
-    var cipher = cr.createCipher('blowfish', 'minghong');
+    var cipher = cr.createCipher('blowfish', config.encryptionKey);
     var enc = cipher.update(str, "utf8", "hex");
     enc += cipher.final('hex');
     return enc;
@@ -25,7 +26,7 @@ exports.Encryption = function (str) {
 //解密
 exports.Decryption = function (str) {
     try {
-        var decipher = cr.createDecipher('blowfish', 'minghong');
+        var decipher = cr.createDecipher('blowfish', config.encryptionKey);
         var decrypted = decipher.update(str, "hex", "utf8");
         decrypted += decipher.final('utf8');
         return decrypted;
