@@ -1,8 +1,10 @@
 import BaseClass from '../../prototype/baseClass'
 import crypto from 'crypto'
 import UserModel from '../../models/admin/user'
+import AddressModel from '../../models/admin/address'
 import { getTokenByCode } from '../../utils/wxService'
 import {Encryption,Decryption} from '../../utils/dataHelper'
+import {ValidateToken} from '../../utils/token'
 
 class User extends BaseClass {
     constructor() {
@@ -107,9 +109,20 @@ class User extends BaseClass {
 
     //新增收货地址
     async addAddress(req, res, next) {
+        console.info(req);
+        console.info(req.headers.authorization);//req.header('Authorization')
+        let key = req.headers.authorization;
+        var result = ValidateToken(key);
+        if(!result){
+            res.send({
+                status: '-1',
+                message: 'token有误'
+            })
+            return; 
+        }
         let data = req.body;
-        let { name, phone, address, gender, lng, lat } = data;
-        if (!name || !phone || !address || !gender || !lng || !lat) {
+        let { name, phone, address, address_detail } = data;
+        if (!name || !phone || !address ||!address_detail) {
             res.send({
                 status: '-1',
                 message: '添加地址失败，参数有误'
@@ -117,11 +130,12 @@ class User extends BaseClass {
             return;
         }
         try {
-            const address_id = await this.getId('address_id');
+            //const address_id = await this.getId('address_id');
             let addressData = {
                 ...data,
-                id: address_id,
-                user_id: req.session.user_id
+                //id: address_id,
+                user_id:result.openid
+                //user_id: req.session.user_id
             }
             await new AddressModel(addressData).save();
             res.send({
@@ -141,7 +155,17 @@ class User extends BaseClass {
     //获取用户所有收货地址
     async getAllAddress(req, res, next) {
         try {
-            let address = await AddressModel.find({ user_id: req.session.user_id });
+            let key = req.headers.authorization;
+            var result = await ValidateToken(key);
+            if(!result){
+                res.send({
+                    status: '-1',
+                    message: 'token有误'
+                })
+                return; 
+            }
+            //let address = await AddressModel.find({ user_id: req.session.user_id });
+            let address = await AddressModel.find({ user_id: result.openid });
             res.send({
                 status: 200,
                 address: address,
@@ -157,9 +181,19 @@ class User extends BaseClass {
     }
 
     //获取指定收货地址
-    async getAddress(req, res, next) {
-        let { address_id } = req.query;
-        if (!address_id) {
+    async getAddressDetail(req, res, next) {
+        let key = req.headers.authorization;
+        var result = await ValidateToken(key);
+        if(!result){
+            res.send({
+                status: '-1',
+                message: 'token有误'
+            })
+            return; 
+        }
+        //let { address_id } = req.query;
+        let { id } = req.query;
+        if (!id) {
             res.send({
                 status: -1,
                 message: '获取指定地址失败，参数有误'
@@ -167,7 +201,8 @@ class User extends BaseClass {
             return;
         }
         try {
-            let address = await AddressModel.findOne({ id: address_id, user_id: req.session.user_id }, '-_id');
+            //let address = await AddressModel.findOne({ id: address_id, user_id: req.session.user_id }, '-_id');
+            let address = await AddressModel.findOne({ _id: id, user_id: result.openid }, '-_id');
             res.send({
                 status: 200,
                 address: address,
@@ -184,6 +219,17 @@ class User extends BaseClass {
 
     //删除收货地址
     async deleteAddress(req, res, next) {
+        let key = req.headers.authorization;
+        var result = await ValidateToken(key);
+        if(!result){
+            res.send({
+                status: '-1',
+                message: 'token有误'
+            })
+            return; 
+        }
+        // console.info(req.body);
+        // console.info(req.query);
         let { address_id } = req.body;
         if (!address_id) {
             res.send({
@@ -193,7 +239,8 @@ class User extends BaseClass {
             return;
         }
         try {
-            let address = await AddressModel.update({ id: address_id, user_id: req.session.user_id }, { user_id: null });
+            //let address = await AddressModel.update({ id: address_id, user_id: req.session.user_id }, { user_id: null });
+            let address = await AddressModel.remove({ _id: address_id, user_id: result.openid });
             res.send({
                 status: 200,
                 message: '删除收获地址成功'
@@ -208,6 +255,16 @@ class User extends BaseClass {
     }
 
     async updateAddress(req, res, next) {
+        let key = req.headers.authorization;
+        console.info(key);
+        var result = await ValidateToken(key);
+        if(!result){
+            res.send({
+                status: '-1',
+                message: 'token有误'
+            })
+            return; 
+        }
         let data = req.body;
         let id = data.id;
         if (!id) {
@@ -218,9 +275,12 @@ class User extends BaseClass {
             return;
         }
         try {
-            delete data.id;
-            let result = await AddressModel.update({ id, user_id: req.session.user_id }, data);
-            if (result) {
+            console.info(id);
+            console.info(result);
+            console.info(data);
+            //delete data.id;
+            let result1 = await AddressModel.update({ _id:id, user_id: result.openid }, data);
+            if (result1) {
                 res.send({
                     status: 200,
                     success: '更新地址成功'
