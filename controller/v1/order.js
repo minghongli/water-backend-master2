@@ -4,6 +4,7 @@ import AddressModel from '../../models/admin/address'
 import GoodsModel from '../../models/v1/goods'
 import AdminModel from '../../models/admin/admin'
 import { getTokenByCode } from '../../utils/wxService'
+import {ValidateToken} from '../../utils/token'
 
 class Order extends BaseClass {
     constructor() {
@@ -15,7 +16,17 @@ class Order extends BaseClass {
 
     //下订单
     async makeOrder(req, res, next) {
-        let { openid, goods, address, remark = '' } = req.body;
+        let key = req.headers.authorization;
+        //console.info(key);
+        var result = await ValidateToken(key);
+        if(!result){
+            res.send({
+                status: '-1',
+                message: 'token有误'
+            })
+            return; 
+        }
+        let { goods, address, remark = '' } = req.body;
         if (!goods || !address) {
             res.send({
                 status: -1,
@@ -37,7 +48,7 @@ class Order extends BaseClass {
                     total_price: values[0].total_price,
                     goods: values[0].order_goods,
                     address: address,
-                    user_id: openid,//values[2]._id
+                    user_id: result.openid,//values[2]._id
                     //id: values[3],
                     remark,
                     status: '未支付',
@@ -123,15 +134,36 @@ class Order extends BaseClass {
 
     //获取用户订单列表
     async getUserOrders(req, res, next) {
+        let key = req.headers.authorization;
+        //console.info(key);
+        var result = await ValidateToken(key);
+        if(!result){
+            res.send({
+                status: '-1',
+                message: 'token有误'
+            })
+            return; 
+        }
         //let { offset = 0, limit = 10 } = req.query;
-        let { page = 0, limit = 10 } = req.query;
+        let { page = 0, limit = 10,state=-1 } = req.query;
         try {
-            let userInfo = await AdminModel.findOne({ id: req.session.user_id });
-            console.log(userInfo)
-            let orders = await OrderModel.find({
-                code: 200,
-                user_id: userInfo._id
-            }, '-_id').limit(Number(limit)).skip(Number(page) * (Number(limit)));//.populate([{path: 'restaurant'}])
+            //let userInfo = await AdminModel.findOne({ id: req.session.user_id });
+            //console.log(userInfo)
+            let orders;
+            if(state==-1){
+                //所有订单
+                orders = await OrderModel.find({
+                    code: 200,
+                    user_id: result.openid
+                }, '-_id').limit(Number(limit)).skip(Number(page) * (Number(limit)));//.populate([{path: 'restaurant'}])
+    
+            }else{
+                orders = await OrderModel.find({
+                    delivery_state:state,
+                    code: 200,
+                    user_id: result.openid
+                }, '-_id').limit(Number(limit)).skip(Number(page) * (Number(limit)));//.populate([{path: 'restaurant'}])
+            }
             res.send({
                 status: 200,
                 data: orders,
@@ -149,6 +181,7 @@ class Order extends BaseClass {
     //获取指定订单信息
     async getOrder(req, res, next) {
         const order_id = req.params.order_id;
+        console.info(order_id);
         if (!order_id) {
             res.send({
                 status: -1,
@@ -157,7 +190,7 @@ class Order extends BaseClass {
             return;
         }
         try {
-            let order = await OrderModel.findOne({ id: order_id })//.populate([{path: 'address'}]);
+            let order = await OrderModel.findOne({ _id: order_id })//.populate([{path: 'address'}]);
             if (!order) {
                 res.send({
                     status: -1,
@@ -182,6 +215,7 @@ class Order extends BaseClass {
 
     //计算总价格
     async _calcTotalPrice(goods) {////配送费
+        console.info(goods);
         let total_price = 0, order_goods = [];
         for (let i = 0; i < goods.length; i++) {
             let good = await GoodsModel.findOne({ '_id': goods[i]['id'] });
