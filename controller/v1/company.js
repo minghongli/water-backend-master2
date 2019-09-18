@@ -11,6 +11,16 @@ class Company extends BaseClass {
 
 	//添加公司用户
 	async addCompany(req, res, next) {
+		let key = req.headers.authorization;
+        //console.info(key);
+        var result = await ValidateToken(key);
+        if(!result){
+            res.send({
+                status: '-1',
+                message: 'token有误'
+            })
+            return; 
+        }
 		let {
 			companyName, userName, sex, phone,
 			address,
@@ -27,7 +37,8 @@ class Company extends BaseClass {
 		}
 		try {
 			let company_data = {
-				companyName, userName, sex, phone,address,invoice,demandOfMonth,singleNumber,brand
+				user_id: result.openid,
+				companyName, userName, sex:"保密", phone,address,invoice,demandOfMonth,singleNumber,brand
 			}
 			let addCompany = new CompanyModel(company_data,false);
 			console.log(2222);

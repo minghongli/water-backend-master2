@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema;
 
 const companySchema = new Schema({
+	user_id: String,
 	//id: Number,
 	// brand: Number, //品牌1:普通用户、 2:普通管理员 3：超级管理员
 	// capacity: Number, //容量1:普通用户、 2:普通管理员 3：超级管理员
@@ -13,9 +14,9 @@ const companySchema = new Schema({
 	phone: String, //联系电话
 	address: String, //公司地址
 	invoice: Number, // 发票类型0不开发票1普通发票2专用发票
-    demandOfMonth: String,//月需求量
-    singleNumber: String,//单词送水
-    brand:String,//品牌
+	demandOfMonth: String,//月需求量
+	singleNumber: String,//单词送水
+	brand: String,//品牌
 	created_at: {
 		type: Date,
 		default: new Date()
