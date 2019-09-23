@@ -42,7 +42,8 @@ export async function getTokenByCode(code){
             if (openid && session_key) {
                 let obj={
                     openid: openid,
-                    session_key: session_key
+                    session_key: session_key,
+                    uid:unionid
                   }
                 // var userId = ''
                 // var userName = ''

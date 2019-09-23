@@ -19,7 +19,7 @@ class User extends BaseClass {
         try {
             let obj = await getTokenByCode(code);
             console.info(obj);
-            let { openid, session_key } = obj;
+            let { openid, session_key,uid } = obj;
             let doc = await UserModel.find({ openid: openid });
             console.info(doc);
             //判断数据库是否存在数据
@@ -41,6 +41,7 @@ class User extends BaseClass {
                 openid,
                 session_key,
                 token,
+                uid
             }
             console.info(result);
             res.send({
