@@ -15,6 +15,7 @@ router.post('/addCompanyUser', Company.addCompany);  //添加公司用户
 router.post('/addAddress', User.addAddress);      //添加收货地址
 router.get('/getAllAddress', User.getAllAddress)        //获取用户所有地址
 router.get('/getAddressDetail', User.getAddressDetail)        //获根据id获取地址详情
+router.get('/getDefaultAddress', User.getDefaultAddress)        //获取用户的默认地址
 router.post('/updateAddress', User.updateAddress);   //更新地址
 router.delete('/delAddress', User.deleteAddress);      //删除收获地址
 module.exports = router;

@@ -218,7 +218,7 @@ class Goods extends BaseClass {
 			res.send({
 				status: 200,
 				message: '获取商品详情成功',
-				result: goods
+				result: goods[0]
 			})
 		} catch (err) {
 			console.log('获取商品详情失败', err);
