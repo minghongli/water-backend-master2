@@ -4,7 +4,7 @@ import AddressModel from '../../models/admin/address'
 import GoodsModel from '../../models/v1/goods'
 import AdminModel from '../../models/admin/admin'
 import { getTokenByCode } from '../../utils/wxService'
-import {ValidateToken} from '../../utils/token'
+import { ValidateToken } from '../../utils/token'
 
 class Order extends BaseClass {
     constructor() {
@@ -19,12 +19,12 @@ class Order extends BaseClass {
         let key = req.headers.authorization;
         //console.info(key);
         var result = await ValidateToken(key);
-        if(!result){
+        if (!result) {
             res.send({
                 status: '-1',
                 message: 'token有误'
             })
-            return; 
+            return;
         }
         let { goods, address, remark = '' } = req.body;
         if (!goods || !address) {
@@ -36,6 +36,7 @@ class Order extends BaseClass {
         }
         try {
             let promiseArr = [];
+            goods = JSON.parse(goods);//由于小程序传对象会变成object,所以这样处理
             //let restaurant = await RestaurantModel.findOne({id: restaurant_id});     //找到该餐馆
             promiseArr.push(this._calcTotalPrice(goods));       //计算总价格
             //promiseArr.push(AddressModel.findOne({id: address_id}));                       //地址信息
@@ -137,32 +138,45 @@ class Order extends BaseClass {
         let key = req.headers.authorization;
         //console.info(key);
         var result = await ValidateToken(key);
-        if(!result){
+        if (!result) {
             res.send({
                 status: '-1',
                 message: 'token有误'
             })
-            return; 
+            return;
         }
         //let { offset = 0, limit = 10 } = req.query;
-        let { page = 0, limit = 10,state=-1 } = req.query;
+        //let { page = 0, limit = 10, state = -1 } = req.query;
+        let { state } = req.body;
         try {
+            //待付款0", "待发货"1, "待收货"10, "待评价"20, "已完成"30   -1是所有订单
+
             //let userInfo = await AdminModel.findOne({ id: req.session.user_id });
             //console.log(userInfo)
             let orders;
-            if(state==-1){
+            if (state == -1) {
                 //所有订单
+                // orders = await OrderModel.find({
+                //     code: 200,
+                //     user_id: result.openid
+                // }, '-_id')
                 orders = await OrderModel.find({
                     code: 200,
                     user_id: result.openid
-                }, '-_id').limit(Number(limit)).skip(Number(page) * (Number(limit)));//.populate([{path: 'restaurant'}])
-    
-            }else{
+                })//.limit(Number(limit)).skip(Number(page) * (Number(limit)));//.populate([{path: 'restaurant'}])
+
+            } else if (state == 0) {
+                //未付款订单
                 orders = await OrderModel.find({
-                    delivery_state:state,
+                    code: 0,
+                    user_id: result.openid
+                });//.populate([{path: 'restaurant'}])
+            } else {
+                orders = await OrderModel.find({
+                    delivery_state: state,
                     code: 200,
                     user_id: result.openid
-                }, '-_id').limit(Number(limit)).skip(Number(page) * (Number(limit)));//.populate([{path: 'restaurant'}])
+                })//.limit(Number(limit)).skip(Number(page) * (Number(limit)));//.populate([{path: 'restaurant'}])
             }
             res.send({
                 status: 200,

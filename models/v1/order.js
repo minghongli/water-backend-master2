@@ -42,7 +42,7 @@ const orderSchema = new Schema({
 	remark: String,
 	status: String,//支付状态 未支付 和 已支付
 	code: Number, //支付状态码 未支付0 和 已支付200
-	delivery_state:Number,      //配送状态 未配送0 配送中10 已完成20
+	delivery_state:Number,      //配送状态 未配送1 配送中10 待评价20 已完成30//"待付款0", "待发货"1, "待收货"10, "待评价"20, "已完成"30
 	create_time: {
 		type: Date,
 		default: new Date()
