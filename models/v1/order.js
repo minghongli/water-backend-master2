@@ -14,6 +14,7 @@ const orderSchema = new Schema({
 	//     restaurant: {type: Schema.ObjectId, ref: 'Restaurant'},
 	//     restaurant_id: Number,
 	total_price: Number,
+	goodsNum:Number,
 	goods: [{
 		good_id: Number,
 		// sku_id: Number,
@@ -38,11 +39,12 @@ const orderSchema = new Schema({
 		phone: String,
 		address_all: String,
 	},
-
 	remark: String,
-	status: String,//支付状态 未支付 和 已支付
-	code: Number, //支付状态码 未支付0 和 已支付200
-	delivery_state:Number,      //配送状态 未配送1 配送中10 待评价20 已完成30//"待付款0", "待发货"1, "待收货"10, "待评价"20, "已完成"30
+	pay_code:Number,//支付状态码 未支付0 和 已支付200  400超过支付期限
+	delivery_code:Number,//配送状态 [未配送0 配送中10 已完成20]//配送中 
+	order_code:Number,//订单状态码 "待付款0", "待发货"1, "待收货"10, "待评价"20, "已完成"30 -100已关闭 //-200超过支付期限交易关闭
+	pay_status:String,//支付状态码 未支付0 和 已支付200  400超过支付期限
+	status: String,//订单状态 "待付款", "待发货", "待收货", "待评价", "已完成" -100已关闭  [订单状态、支付状态、发货状态]
 	create_time: {
 		type: Date,
 		default: new Date()

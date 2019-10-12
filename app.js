@@ -12,6 +12,10 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json({}));
 
+const fs = require('fs');
+//fs.write(fd, buf, 0, 'utf-8', function(err, written, buffer) {});
+    // fs.write(fd, buf, 0, buf.length, 0, function (err, written, buf
+
 app.all('*', (req, res, next) => {
     //res.header("Access-Control-Allow-Origin", req.headers.origin || '*');
     res.header("Access-Control-Allow-Origin", '*');

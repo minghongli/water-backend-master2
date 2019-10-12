@@ -3,7 +3,6 @@ import admin from './admin'
 import user from './users'
 import statistics from './statistics'
 import service from './service'
-
 export default app => {
     app.use('/v1', v1);
     app.use('/admin', admin);

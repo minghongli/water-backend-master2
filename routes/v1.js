@@ -6,8 +6,12 @@ import Comment from '../controller/v1/comment'
 import Goods from '../controller/v1/goods'
 import Pay from '../controller/v1/pay'
 import Auth from '../controller/admin/auth'
+import Upload from '../controller/v1/upload'
+
 
 const router = express.Router()
+router.post('/uploadImg', Upload.uploadImg);      //上传商品图片
+
 router.get("/suggestion", Cites.suggestion);               //地址位置搜索
 router.get("/location", Cites.location);                 //定位
 
@@ -45,9 +49,13 @@ router.delete('/comment', Auth.authUser, Comment.deleteComment);              //
 
 router.post('/order', Order.makeOrder);         //下订单
 router.get('/getOrders', Order.getOrders);             //获取订单列表
+router.get('/getPendingOrders', Order.getPendingOrders);             //获取订单列表
+
 router.get('/getOrderById/:order_id', Order.getOrder);             //获取指定订单
 router.post('/getUserOrders', Order.getUserOrders);             //获取用户订单列表
 router.post('/updateOrder', Order.updateOrder);             //更新订单
+router.post('/cancelOrder', Order.cancelOrder);             //更新订单
+
 
 //支付
 router.post('/pay', Auth.authUser, Pay.initPay);                    //初始化支付

@@ -12,6 +12,7 @@ router.post('/login', Admin.adminLogin);     //管理端用戶登录/ user_login
 router.post('/logout', Admin.logout);   //退出
 
 router.get('/getCompanyUser', Company.getCompanyList); //获取公司用户列表
+router.get('/getCompanyDetail',Company.getCompanyDetail);//获取公司详情
 
 //router.get('/wx_login', User.wxLogin);     //用户登录/ user_login  /auth/user_login
 export default router;

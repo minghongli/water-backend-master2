@@ -229,5 +229,8 @@ class Goods extends BaseClass {
 		}
 	}
 
+
+	//上传图片
+
 }
 export default new Goods();

@@ -4,8 +4,9 @@ import { stringify } from 'querystring';
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    openid:String,
-    session_key:String,
+    openid: String,
+    session_key: String,
+    phone: String,
     create_time: {
         type: Date,
         default: new Date()

@@ -37,6 +37,7 @@ class Order extends BaseClass {
         try {
             let promiseArr = [];
             goods = JSON.parse(goods);//由于小程序传对象会变成object,所以这样处理
+            address = JSON.parse(address);//由于小程序传对象会变成object,所以这样处理
             //let restaurant = await RestaurantModel.findOne({id: restaurant_id});     //找到该餐馆
             promiseArr.push(this._calcTotalPrice(goods));       //计算总价格
             //promiseArr.push(AddressModel.findOne({id: address_id}));                       //地址信息
@@ -44,18 +45,21 @@ class Order extends BaseClass {
             //promiseArr.push(getTokenByCode(code));
             //promiseArr.push(this.getId('order_id'));                                    //订单号
             Promise.all(promiseArr).then(async (values) => {
+                let goodsNum = values[0].order_goods.reduce((prev, cur) => prev + cur.num, 0);
                 let order_data = {
                     number: Math.random().toString(9).substr(2),//订单编号
+                    goodsNum: goodsNum,
                     total_price: values[0].total_price,
                     goods: values[0].order_goods,
                     address: address,
                     user_id: result.openid,//values[2]._id
                     //id: values[3],
                     remark,
-                    status: '未支付',
-                    code: 0,
-                    delivery_state: 0,//配送状态
-                    //shipping_fee: restaurant.shipping_fee,
+                    status: '待付款',
+                    pay_status: "未支付",
+                    pay_code: 0,//支付状态码 未支付0 和 已支付200  400超过支付期限
+                    delivery_code: 0,//配送状态 [未配送0 配送中10 待评价20 已完成30] 
+                    order_code: 0,//订单状态码 "待付款0", "待发货"1, "待收货"10, "待评价"20, "已完成"30 -100已取消
                     create_time_timestamp: Math.floor(new Date().getTime() / 1000)
                 }
                 let order = new OrderModel(order_data);
@@ -80,10 +84,10 @@ class Order extends BaseClass {
 
     //修改订单
     async updateOrder(req, res, next) {
-        let { orderId, state } = req.body;
+        let { orderId, state } = req.body; //state:1确认发货 10完成订单
         if (!orderId || !state) {
             res.send({
-                status: -1,
+                code: -1,
                 message: '更新订单状态失败，参数有误'
             })
         }
@@ -91,34 +95,104 @@ class Order extends BaseClass {
             console.info(11);
             let order = await OrderModel.findOne({ _id: orderId });
             console.info(order);
-            //order.status = '支付成功';
-            order.delivery_state = state;
+            if (state == 1) {
+                order.delivery_code = 10;
+                order.order_code = 10;
+                order.status = "待收货";
+            } else if (state == 10) {
+                order.delivery_code = 10;
+                order.order_code = 30;
+                order.status = "已完成";
+            }
             await order.save();
             res.send({
-                status: 200,
+                code: 0,
                 message: '更新订单成功',
                 order_id: orderId
             })
         } catch (err) {
             console.log('更新订单失败', err);
             res.send({
-                status: -1,
+                code: -1,
                 message: '更新订单失败'
+            })
+        }
+    }
+
+    //取消订单
+    async cancelOrder(req, res, next) {
+        let { orderId } = req.body;
+        if (!orderId) {
+            res.send({
+                code: -1,
+                message: '取消订单失败，参数有误'
+            })
+        }
+        try {
+            console.info(11);
+            let order = await OrderModel.findOne({ _id: orderId });
+            console.info(order);
+            order.status = '已取消';
+            order.order_code = -100;
+            await order.save();
+            res.send({
+                code: 0,
+                message: '取消订单成功',
+                order_id: orderId
+            })
+        } catch (err) {
+            console.log('取消订单失败', err);
+            res.send({
+                code: -1,
+                message: '取消订单失败'
             })
         }
     }
     //获取所有订单列表
     async getOrders(req, res, next) {
-        let { page = 0, limit = 10 } = req.query;
+        //订单状态order_state:-1全部 1">待发货 10">待收货 30">已完成100">已取消
+        //支付状态pay_state: -1全部0未支付200已支付
+        //配送状态delivery_state:
+        let { page = 0, limit = 10, order_state = -1, pay_state = -1 } = req.query;
+
+
         //let {offset = 0, limit = 10} = req.query;
         try {
-            let orders = await OrderModel.find({
-                code: 0
-            }, '-_id').skip(Number(page) * (Number(limit))).limit(Number(limit)).sort({ '_id': -1 });
+            let orders;
+            if (order_state == -1 && pay_state == -1) {
+                orders = await OrderModel.find({
+                    // code: 0
+                }).skip(Number(page) * (Number(limit))).limit(Number(limit)).sort({ '_id': -1 });
+            } else if (order_state == -1 && pay_state != -1) {
+                orders = await OrderModel.find({
+                    pay_code: pay_state
+                }).skip(Number(page) * (Number(limit))).limit(Number(limit)).sort({ '_id': -1 });
+            } else if (pay_state == -1 && order_state != -1) {
+                if (order_state == 100||order_code==0) {
+                    //已取消或未付款
+                    orders = await OrderModel.find({
+                        order_code: order_state
+                    }).skip(Number(page) * (Number(limit))).limit(Number(limit)).sort({ '_id': -1 });
+                } else {
+                    orders = await OrderModel.find({
+                        pay_code: '200',
+                        order_code: order_state,
+                    }).skip(Number(page) * (Number(limit))).limit(Number(limit)).sort({ '_id': -1 });
+                }
+
+            } else {
+                orders = await OrderModel.find({
+                    pay_code: pay_state,
+                    order_code: order_state,
+                }).skip(Number(page) * (Number(limit))).limit(Number(limit)).sort({ '_id': -1 });
+            }
+
+
+            // let orders = await OrderModel.find({
+            //     code: 0
+            // }, '-_id').skip(Number(page) * (Number(limit))).limit(Number(limit)).sort({ '_id': -1 });
             //.sort({'_id':-1}).exec(cb);
             //await RestaurantModel.find({}, '-_id').limit(Number(limit)).skip(Number(offset)).sort({sort_type: 1});
-
-
             res.send({
                 status: 200,
                 data: orders,
@@ -133,6 +207,35 @@ class Order extends BaseClass {
         }
     }
 
+    //获取待处理订单列表
+    async getPendingOrders(req, res, next) {
+        let { page = 0, limit = 10, order_code = -1 } = req.query;
+        //let {offset = 0, limit = 10} = req.query;
+        try {
+            //待处理订单
+            let obj = {
+                pay_code: 200,//已支付
+                //delivery_state: { $ne: 30 },//不等于30（已完成）
+                order_code: { $in: [1, 10] }//待发货，待收货
+            }
+            if (order_code != -1) {
+                obj.order_code = order_code
+            }
+            console.info(obj);
+            let orders = await OrderModel.find(obj).skip(Number(page) * (Number(limit))).limit(Number(limit)).sort({ '_id': -1 });
+            res.send({
+                code: 0,
+                data: orders,
+                message: '获取待处理订单列表成功'
+            })
+        } catch (err) {
+            console.log('获取待处理订单列表失败', err);
+            res.send({
+                code: -1,
+                message: '获取待处理订单列表失败'
+            })
+        }
+    }
     //获取用户订单列表
     async getUserOrders(req, res, next) {
         let key = req.headers.authorization;
@@ -149,32 +252,27 @@ class Order extends BaseClass {
         //let { page = 0, limit = 10, state = -1 } = req.query;
         let { state } = req.body;
         try {
-            //待付款0", "待发货"1, "待收货"10, "待评价"20, "已完成"30   -1是所有订单
+            //待付款0", "待发货"1, "待收货"10, "待评价"20, "已完成"30   -1是所有订单  400超过支付期限
 
             //let userInfo = await AdminModel.findOne({ id: req.session.user_id });
             //console.log(userInfo)
             let orders;
             if (state == -1) {
                 //所有订单
-                // orders = await OrderModel.find({
-                //     code: 200,
-                //     user_id: result.openid
-                // }, '-_id')
                 orders = await OrderModel.find({
-                    code: 200,
+                    //code: 200,
                     user_id: result.openid
-                })//.limit(Number(limit)).skip(Number(page) * (Number(limit)));//.populate([{path: 'restaurant'}])
-
+                });
             } else if (state == 0) {
                 //未付款订单
                 orders = await OrderModel.find({
-                    code: 0,
+                    pay_code: 0,
                     user_id: result.openid
                 });//.populate([{path: 'restaurant'}])
             } else {
+                //已支付
                 orders = await OrderModel.find({
-                    delivery_state: state,
-                    code: 200,
+                    order_code: state,
                     user_id: result.openid
                 })//.limit(Number(limit)).skip(Number(page) * (Number(limit)));//.populate([{path: 'restaurant'}])
             }
@@ -252,13 +350,15 @@ class Order extends BaseClass {
 
     //计算剩余支付时间
     async _calcRemainTime(order) {
-        if (order.code !== 200) {
-            let fifteen_minutes = 60 * 15;      //15分钟转为秒数
+        if (order.pay_code !== 200) {
+            let fifteen_minutes = 60 * 30;      //30分钟转为秒数
             let now = Math.floor(new Date().getTime() / 1000);      //现在时刻
             let order_time = order.create_time_timestamp;       //订单时刻
             if (now - order_time >= fifteen_minutes) {
-                order.status = '超过支付期限'
-                order.code = 400;
+                order.pay_status = '超过支付期限'
+                order.pay_code = 400;//支付状态：超过支付期限
+                order.order_code = -100;//订单状态 已关闭
+                order.status = "已关闭";
                 order.pay_remain_time = 0;
             } else {
                 order.pay_remain_time = fifteen_minutes - (now - order_time);

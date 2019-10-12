@@ -11,9 +11,9 @@ const addressSchema = new Schema({
     address: String,  //地址
     address_detail: String,  //详细地址，门牌号
     // gender: String,  //性别
-    // province: String,  //省
-    // city: String,  //市
-    // district: String,  //区
+    province: String,  //省
+    city: String,  //市
+    district: String,  //区
     // house_number : String     //门牌号
     // lng: String, //经度
     // lat: String,//纬度

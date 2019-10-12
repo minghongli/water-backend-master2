@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const goodsSchema = new Schema({
 	id: Number,
 	brand: Number, //品牌1:普通用户、 2:普通管理员 3：超级管理员
-	capacity: Number, //容量1:普通用户、 2:普通管理员 3：超级管理员
+	capacity: Number, //容量'18.9L','15.9L','2L','17.8L','330ML*24','348ML*24','350ML*24','380ML*24','4L*4'
 	package_type: Number, //包装类型1:桶装、 2:会议用瓶装 3：泡茶
 	name: String, //名称
 	price: Number, //价格

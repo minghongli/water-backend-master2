@@ -224,23 +224,24 @@ class User extends BaseClass {
         let { id } = req.query;
         if (!id) {
             res.send({
-                status: -1,
+                code: -1,
                 message: '获取指定地址失败，参数有误'
             })
             return;
         }
         try {
             //let address = await AddressModel.findOne({ id: address_id, user_id: req.session.user_id }, '-_id');
-            let address = await AddressModel.findOne({ _id: id, user_id: result.openid }, '-_id');
+            //let address = await AddressModel.findOne({ _id: id, user_id: result.openid }, '-_id');
+            let address = await AddressModel.findOne({ _id: id, user_id: result.openid });
             res.send({
-                status: 200,
-                address: address,
+                code: 0,
+                data: address,
                 message: '获取地址成功'
             })
         } catch (err) {
             console.log('获取收货地址失败', err);
             res.send({
-                status: -1,
+                code: -1,
                 message: '获取收货地址失败',
             })
         }
@@ -259,8 +260,8 @@ class User extends BaseClass {
         }
         // console.info(req.body);
         // console.info(req.query);
-        let { address_id } = req.body;
-        if (!address_id) {
+        let { id } = req.body;
+        if (!id) {
             res.send({
                 status: -1,
                 message: '删除地址失败，参数有误'
@@ -269,7 +270,7 @@ class User extends BaseClass {
         }
         try {
             //let address = await AddressModel.update({ id: address_id, user_id: req.session.user_id }, { user_id: null });
-            let address = await AddressModel.remove({ _id: address_id, user_id: result.openid });
+            let address = await AddressModel.remove({ _id: id, user_id: result.openid });
             res.send({
                 status: 200,
                 message: '删除收获地址成功'
